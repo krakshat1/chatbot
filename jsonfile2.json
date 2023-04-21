@@ -1,0 +1,31 @@
+{
+    "intents": [
+        {
+            "tag": "profile",
+            "patterns": [
+                "why do you want to work here?"
+            ],
+            "responses": [
+                "bajrangbali"
+            ]
+        },
+        {
+            "tag": "status",
+            "patterns": [
+                "what is your designation"
+            ],
+            "responses": [
+                "developer"
+            ]
+        },
+        {
+            "tag": "true",
+            "patterns": [
+                "hi"
+            ],
+            "responses": [
+                "hello how are you?"
+            ]
+        }
+    ]
+}
