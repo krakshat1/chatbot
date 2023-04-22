@@ -29,7 +29,7 @@ def chatBot(request):
    query = str(request.GET.get("query"))
    
    print(query)
-   print(name)
+   
    lemmatizer=WordNetLemmatizer()
 
    with open('jsonfile.json') as fileobj:
