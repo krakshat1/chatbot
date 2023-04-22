@@ -27,7 +27,7 @@ def index(request):
 
 def chatBot(request):
    query = str(request.GET.get("query"))
-   name = str(request.GET.get("name"))
+   
    print(query)
    print(name)
    lemmatizer=WordNetLemmatizer()

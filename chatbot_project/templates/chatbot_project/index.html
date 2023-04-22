@@ -1,35 +1,20 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PYBOT</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!-- Font Awesome -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
-  rel="stylesheet"
-/>
+  
+
 <!-- Link to Static CSS -->
   <link rel="stylesheet" type="text/css" href="{% static 'chatbot_project/stylesheets/staticStyle.css' %}">
 
   <!-- Dynamic CSS -->
   <style>
-     body {
-      background-color: #61778d;
-    }
     :root {
       --fadeIn_fadeOut_transition_speed: 300ms;
     }
@@ -94,34 +79,22 @@
       transition-property: opacity, background-color, transform;
       z-index: var(--chatBot_ZIndex);
     }
-    .chat_box {
-      display: flex;
-    margin-top: 80px;
-    margin-bottom: 29px;
-    }
-    .chat_box button {margin-right: 10px; }
   </style>
 
 
 </head>
 
 <body>
-  {%csrf_token%}
-    <form id="myForm" value="query">
-  <div class="chat_box">
-  <button type="button" class="btn btn-danger btn-rounded"><a href="{% url 'chatbot_project:chatBot4' %}">Main Menu</a></button><br>
-  <button type="button" class="btn btn-secondary btn-rounded"><a href="{% url 'chatbot_project:chatBot2' %}">Train The Existing Bot</a></button><br>
-  
-    <div id="botWindow" class="container fade-in-transition hidden">
+  <div id="botWindow" class="container fade-in-transition hidden">
     <div class="header">
       <div class="header">
         <h1>pheonix</h1>
-        <img src='{% static "chatbot_project/images/bot.png" %}'>
+        <img src="{% static 'chatbot_project/images/bot.png'%}">
       </div>
       <button class="hideBot fade-out-transition" type="button" onclick="hideBotFun()">X</button>
     </div>
     <div class="body">
-      <button class="bot_message">Hi! How can I help you ? </button>
+      <p class="bot_message">Hi! How can I help you ? </p>
     </div>
     <!-- Bot Typing animation -->
     <div class="botTyping-bg">
@@ -132,32 +105,28 @@
         <span>pheonix is typing</span>
       </div>
     </div>
-    
+    {%csrf_token%}
+    <form id="myForm" value="query">
       <div class="footer">
-        <!-- <input id="query" type="text" onkeyup="checkText()" placeholder="Type..." name="query"> -->
-        <button class="submit_btn" name="query" onclick="checkText()" value="Click here to start" id="query"> Click here to start</button>
-
+        <input id="query" type="text" onkeyup="checkText()" placeholder="Type..." name="query">
         <button class="submit_btn" type="submit"> Send</button>
-        <!-- <i class="material-icons01" id="send-icon">send</i> -->
       </div>
     </form>
   </div>
   <!-- Here is the pheonix dialog message box to catch user's attention -->
   <div class="popup-dialog fade-in-transition hidden">
     <div class="pheonix-popup-dialog">
-      
+      <span>Hi there, I'm pheonix. <br>How may I help you today?</span>
     </div>
     <div class="attention"></div>
     <div class="down-triangle"></div>
   </div>
   <button id="showBotbtn" class="showBot fade-in-transition" type="button" onclick="showBotFun()">Chat</button>
 
-
   <!-- ajax string -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  
   <!-- JavaScript -->
   <script type="text/javascript">
     "use strict";
@@ -183,15 +152,15 @@
     // updates the chats
     function updateChatText() {
       let html = "";
-      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><button  class= bot_message class=submit_btn name=query onclick=checkText() value=Click here to start id=query>';
-      let userHtmlTag = '<div class = "user-message-block floatup-msg"><img class = "user-profile" src="{% static "chatbot_project/images/user.png" %}"><p class= user_message>';
+      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/download.png"%}"><p class= bot_message>';
+      let userHtmlTag = '<div class = "user-message-block floatup-msg"><img class = "user-profile"  src="{% static "chatbot_project/images/user.png"%}"><p class= user_message>';
       messages.slice().reverse().forEach(function (item, index) {
         if (item.name === "Bot") {
           if (item.message.includes("https://") == true){
             html += `<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><a class= bot_message href="${item.message}">${item.message}</a></div>`
           }
           else{
-            html += botHtmlTag + item.message + '</button></div>'
+            html += botHtmlTag + item.message + '</p></div>'
           }
         } else {
           html += userHtmlTag + item.message + '</p></div>'
@@ -233,7 +202,7 @@
       }, fadeIn_fadeOut_transition_speed);
 
       if (messages.length === 0) {
-        let msg2 = { name: "Bot", message: "Click Here TO Start" };
+        let msg2 = { name: "Bot", message: "Hello! How can I help you? <br> Type 'help' to get help" };
         messages.push(msg2);
         updateChatText();
         scrollToBottom();
@@ -265,6 +234,7 @@
 
 
     }
+
     function getCookie(name) {
       let cookieValue = null;
       if (document.cookie && document.cookie !== '') {
@@ -346,7 +316,4 @@
     })
 
   </script>
-</body>
-
-</html>
-
+  
