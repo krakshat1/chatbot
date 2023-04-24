@@ -26,7 +26,11 @@ def index(request):
 
 
 def chatBot(request):
-   query = str(request.GET.get("query"))
+   if request.method == 'POST':
+        query = request.POST.get('my_variable')
+
+   else:
+        query = str(request.GET.get("query"))
    
    print(query)
    
@@ -181,12 +185,12 @@ def question(request):
    # print(answer)
    # return render(request, 'chatbot_project/question.html')
 def interview(request):
-   return render(request, 'chatbot_project/interview.html')
-
+    return render(request, 'chatbot_project/interview2.html')
 def interview2(request):
    if request.method == "POST":
-         but = str(request.POST.get("bu"))
-         if but==None:
-            but = str(request.POST.get("but"))
-         print(but)
-   return render(request, 'chatbot_project/interview2.html')
+         but = str(request.POST.get("but"))
+   if request.method == "GET":
+      bu = str(request.GET.get("bu"))
+
+   print(but)
+   return JsonResponse({"Bot": bu})
