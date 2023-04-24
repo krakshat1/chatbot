@@ -185,5 +185,8 @@ def interview(request):
 
 def interview2(request):
    if request.method == "POST":
-         but = str(request.POST.get("but"))
+         but = str(request.POST.get("bu"))
+         if but==None:
+            but = str(request.POST.get("but"))
+         print(but)
    return render(request, 'chatbot_project/interview2.html')
