@@ -110,7 +110,6 @@
     <form id="myForm" value="query">
       <div class="footer">
         <input id="query" type="text" onkeyup="checkText()" placeholder="Type..." name="query">
-        <button class="chat-btn  mt-1 " value = "hi" name ="query" id = "query" onclick = "controlflow(this)">
         <button class="submit_btn" type="submit"> Send</button>
       </div>
     </form>
@@ -155,7 +154,8 @@
     // updates the chats
     function updateChatText() {
       let html = "";
-      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/download.png"%}"><p class= bot_message>';
+      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/download.png"%}"><div id="chatbot-chat"><div><button class="chat-btn  mt-1 " value = "hi" name ="query" id = "query" onclick = "controlflow(this)">';
+     
       let userHtmlTag = '<div class = "user-message-block floatup-msg"><img class = "user-profile"  src="{% static "chatbot_project/images/user.png"%}"><p class= user_message>';
       messages.slice().reverse().forEach(function (item, index) {
         if (item.name === "Bot") {
@@ -163,7 +163,7 @@
             html += `<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><a class= bot_message href="${item.message}">${item.message}</a></div>`
           }
           else{
-            html += botHtmlTag + item.message + '</p></div>'
+            html += botHtmlTag + item.message + '</button></div>'
           }
         } else {
           html += userHtmlTag + item.message + '</p></div>'
@@ -208,7 +208,6 @@
         let msg2 = { name: 'Bot', message: '<div id="chatbot-chat"><div><button class="chat-btn  mt-1 " value = "hi" name ="query" id = "query" onclick = "controlflow(this)">Click Here 👀</button></div>'};
         messages.push(msg2);
         updateChatText();
-        scrollToBottom();
       }
     }
 
@@ -285,7 +284,7 @@
       botTyping.classList.remove("hidden");
 
       $.ajax({
-        method: "GET",
+        type: "GET",
         url: "{%url 'chatbot_project:chatBot'%}",
         headers: {
           "Content-type": "application/json",
@@ -301,7 +300,6 @@
           let msg2 = { name: "Bot", message: obj.Bot };
           messages.push(msg2);
           updateChatText();
-          scrollToBottom();
           submit_btn.disabled = false;
           botTyping.classList.add("hidden");
           txtUserInp.value = "";
@@ -319,9 +317,18 @@
     })
     function controlflow(set){
       const form1 = document.getElementById("myForm");
-      const botTyping = document.querySelector(".botTyping")
-
+      const botTyping = document.querySelector(".botTyping");
+      
       var txtUserInp= set.getAttribute('value');
+      if (txtUserInp.value == "") {
+        return
+      }
+      let msg1 = { name: "user1", message: txtUserInp }
+      messages.push(msg1);
+      updateChatText();
+      submit_btn.disabled = true;
+      botTyping.classList.remove("hidden");
+
       $.ajax({
                 url: "{% url 'chatbot_project:chatBot' %}",
                 type: "POST",
@@ -337,7 +344,10 @@
          let msg2 = { name: "Bot", message: obj.Bot };
          messages.push(msg2);
          updateChatText();
-         scrollToBottom();
+    
+         submit_btn.disabled = false;
+         botTyping.classList.add("hidden");
+         txtUserInp.value = "";
 
 
                 },
