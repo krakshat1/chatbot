@@ -107,6 +107,9 @@
     </div>
     {%csrf_token%}
     <form id="myForm" value="query">
+      <div>
+
+      </div>
       <div class="footer">
         <input id="query" type="text" onkeyup="checkText()" placeholder="Type..." name="query">
         <button class="submit_btn" type="submit"> Send</button>
@@ -126,7 +129,10 @@
   <!-- ajax string -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!-- JavaScript -->
   <script type="text/javascript">
     "use strict";
@@ -152,7 +158,7 @@
     // updates the chats
     function updateChatText() {
       let html = "";
-      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/download.png"%}"><p class= bot_message>';
+      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/download.png"%}"><button class= bot_message>';
       let userHtmlTag = '<div class = "user-message-block floatup-msg"><img class = "user-profile"  src="{% static "chatbot_project/images/user.png"%}"><p class= user_message>';
       messages.slice().reverse().forEach(function (item, index) {
         if (item.name === "Bot") {
@@ -160,7 +166,7 @@
             html += `<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><a class= bot_message href="${item.message}">${item.message}</a></div>`
           }
           else{
-            html += botHtmlTag + item.message + '</p></div>'
+            html += botHtmlTag + item.message + '</button></div>'
           }
         } else {
           html += userHtmlTag + item.message + '</p></div>'
@@ -203,7 +209,16 @@
 
       if (messages.length === 0) {
         let msg2 = { name: "Bot", message: "Hello! How can I help you? <br> Type 'help' to get help" };
-        messages.push(msg2);
+        const html = { name:"Bot",message:`<div id="chatbot-chat">
+          <div>
+                <button class="chat-btn  mt-1 " class = "submit_btn" onclick = "checkText()" id ="query" type="submit" name ="query" value = "click">Click Here 👀</button>
+                <button class="chat-btn  mt-1">Just browsing 👀</button>
+                <button class="chat-btn mt-1">I have questions 😊</button>
+                <button class="chat-btn  mt-1">Using ChatBot 👉 </button>
+            </div>`};
+ 
+
+        messages.push(html);
         updateChatText();
         scrollToBottom();
       }
