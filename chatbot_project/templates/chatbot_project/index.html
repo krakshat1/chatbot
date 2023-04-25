@@ -154,7 +154,7 @@
     // updates the chats
     function updateChatText() {
       let html = "";
-      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/download.png"%}"><div id="chatbot-chat"><div><button class="chat-btn  mt-1 " value = "hi" name ="query" id = "query" onclick = "controlflow(this)">';
+      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/download.png"%}"><div id="chatbot-chat"><div><button class="chat-btn  mt-1 " name ="query" id = "myButton" onclick = "controlflow(this)">';
      
       let userHtmlTag = '<div class = "user-message-block floatup-msg"><img class = "user-profile"  src="{% static "chatbot_project/images/user.png"%}"><p class= user_message>';
       messages.slice().reverse().forEach(function (item, index) {
@@ -337,20 +337,29 @@
                     'csrfmiddlewaretoken': '{{ csrf_token }}'
                 },
                 success: function(response) {
-                     const res = JSON.stringify(response);
+        const res = JSON.stringify(response);
         const obj = JSON.parse(res);
+        var buttons = response.Bot;
+        for (var i = 0; i < buttons.length; i++) {
+          var button = buttons[i];
+          alert(button)
+        }
+
         // alert(res);
         // alert(obj.Bot);
          let msg2 = { name: "Bot", message: obj.Bot };
          messages.push(msg2);
          updateChatText();
+         var myVariable = obj.Bot ;
+         var button = document.getElementById("myButton");
+         button.addEventListener("click", function() {
+         button.value = myVariable;
+       })
     
          submit_btn.disabled = false;
          botTyping.classList.add("hidden");
          txtUserInp.value = "";
-
-
-                },
+         },
                 error: function(xhr) {
                     console.log(xhr.responseText);
                 }

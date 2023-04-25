@@ -58,7 +58,6 @@ def chatBot(request):
 
    words = sorted(set(words))
    classes = sorted(set(classes))
-
    def clean_corpus(words):
       words = [doc.lower() for doc in words]
       for w in words:
@@ -131,10 +130,12 @@ def chatBot(request):
 
    def get_response(intents_list , intents_json):
       tag = intents_list[0]['intent']
+      # print(tag)
       list_of_intents = intents_json['intents']
       for i in list_of_intents:
          if i['tag'] == tag :
-               result= random.choice (i['responses'])
+               result= (i['responses'])
+               print(result)
                break
          # elif i['tag']!=tag:
          #     result=random.choice(["Sorry:), I didn't get what you are saying"])
