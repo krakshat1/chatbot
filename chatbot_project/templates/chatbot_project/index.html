@@ -154,16 +154,16 @@
     // updates the chats
     function updateChatText() {
       let html = "";
-      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/download.png"%}"><div id="chatbot-chat"><div><button class="chat-btn  mt-1 " name ="query" id = "myButton" onclick = "controlflow(this)">';
+      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><div id="chatbot-chat"><button class="chat-bt mt-1 " name ="query"  id = "myButton" onclick = "controlflow(this)" value = "';
      
       let userHtmlTag = '<div class = "user-message-block floatup-msg"><img class = "user-profile"  src="{% static "chatbot_project/images/user.png"%}"><p class= user_message>';
       messages.slice().reverse().forEach(function (item, index) {
         if (item.name === "Bot") {
           if (item.message.includes("https://") == true){
-            html += `<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><a class= bot_message href="${item.message}">${item.message}</a></div>`
+            html += botHtmlTag + item.message +'">'+item.message +'</button></div>'
           }
           else{
-            html += botHtmlTag + item.message + '</button></div>'
+            html += `<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><button name ="query"  id = "myButton" onclick = "controlflow(this)" value = "${item.message}"<a class= bot_message href="${item.message}">${item.message}</a></button></div>`
           }
         } else {
           html += userHtmlTag + item.message + '</p></div>'
@@ -204,8 +204,8 @@
         popupDialog.classList.add("hidden");
       }, fadeIn_fadeOut_transition_speed);
 
-      if (messages.length === 0) {
-        let msg2 = { name: 'Bot', message: '<div id="chatbot-chat"><div><button class="chat-btn  mt-1 " value = "hi" name ="query" id = "query" onclick = "controlflow(this)">Click Here 👀</button></div>'};
+      if (messages.length == 0) {
+        let msg2 = { name: 'Bot', message: '<div id="chatbot-chat"><div><button " value = "hi" name ="query" onclick = "controlflow(this)">Click Here 👀</button></div>'};
         messages.push(msg2);
         updateChatText();
       }
@@ -277,8 +277,8 @@
       if (txtUserInp.value == "") {
         return
       }
-      let msg1 = { name: "user1", message: txtUserInp.value }
-      messages.push(msg1);
+      let msg3 = { name: "user1", message: txtUserInp.value }
+      messages.push(msg3);
       updateChatText();
       submit_btn.disabled = true;
       botTyping.classList.remove("hidden");
@@ -342,19 +342,21 @@
         var buttons = response.Bot;
         for (var i = 0; i < buttons.length; i++) {
           var button = buttons[i];
-          alert(button)
+          let msg2 = { name: "Bot", message: button };
+         messages.push(msg2);
+         updateChatText();
+         var myVariable = button ;
+         
         }
 
         // alert(res);
         // alert(obj.Bot);
-         let msg2 = { name: "Bot", message: obj.Bot };
-         messages.push(msg2);
-         updateChatText();
-         var myVariable = obj.Bot ;
-         var button = document.getElementById("myButton");
-         button.addEventListener("click", function() {
-         button.value = myVariable;
-       })
+         
+       //   var myVariable = button ;
+       //   var button = document.getElementById("myButton");
+       //   button.addEventListener("click", function() {
+       //   button.value = myVariable;
+       // })
     
          submit_btn.disabled = false;
          botTyping.classList.add("hidden");
