@@ -8,7 +8,7 @@
     <!-- Horizontal Form -->
 	<div class="panel panel-success">
 		<div class="panel-header with-border">
-			<h2 class="panel-title text-center">Add Category</h2>
+			<h2 class="panel-title text-center">Train Your ChatBot</h2>
 		</div>
 		<!-- /.panel-header -->
 		<!-- form start -->
@@ -20,7 +20,7 @@
 					</div>
 					
 					<div class="col-md-12 text-center" style="margin-top:15px;">
-						<button class="btn btn-success" id="addButton" value=""><span class="glyphicon glyphicon-plus"></span> Add New Field</button>
+						<button class="btn btn-success" id="addButton" value=""><span class="glyphicon glyphicon-plus"></span> Add Menu</button>
 					</div>
 
 				
@@ -44,7 +44,7 @@
 	
 		 $("#addButton").on("click", function(e){ 
 	    	e.preventDefault();
-	    	var catgName = prompt("Please Add your category name");
+	    	var catgName = prompt("Please Add your Menu");
 			if(catgName == ''){
 				catgName = 'Catg#'+counter;
 			}
@@ -63,9 +63,9 @@
 					 'aria-expanded="'+ariaExpanded+'" aria-controls="collapse'+ counter +'"> '+catgName+' </a><div class="actions_div" style="position: relative; top: -26px;">' +
 					 '<a href="#" accesskey="'+ counter +'" class="remove_ctg_panel exit-btn pull-right"><span class="glyphicon glyphicon-remove"></span></a>' +
 					 '<a href="#" accesskey="'+ counter +'" class="edit_ctg_label pull-right"><span class="glyphicon glyphicon-edit "></span> Edit</a>' +
-					 '<a href="#" accesskey="'+ counter +'" class="pull-right" id="addButton2"> <span class="glyphicon glyphicon-plus"></span> Add child category</a></div></h4></div>' +
+					 '<a href="#" accesskey="'+ counter +'" class="pull-right" id="addButton2"> <span class="glyphicon glyphicon-plus"></span> Add SubMenu</a></div></h4></div>' +
 					 '<div id="collapse'+ counter +'" class="panel-collapse collapse '+expandedClass+'"role="tabpanel" aria-labelledby="heading'+ counter +'">'+
-					 '<div class="panel-body"><div id="TextBoxDiv'+ counter +'"></div><a class="btn btn-xs btn-primary" accesskey="'+ counter +'" id="addButton3" ><span class="glyphicon glyphicon-plus"></span> Add New Attributes</a>' +
+					 '<div class="panel-body"><div id="TextBoxDiv'+ counter +'"></div><a class="btn btn-xs btn-primary" accesskey="'+ counter +'" id="addButton3" ><span class="glyphicon glyphicon-plus"></span>Add Answer</a>' +
 					 '<a class="btn btn-xs btn-success" accesskey="'+ counter +'" id="ajax_submit_button" >Done</a></div></div></div></div>');
 				counter++;
 			}
@@ -77,7 +77,7 @@
 	         e.preventDefault();
 			 var parentId = $(this).attr('accesskey');
 			 var parentPanel = '#panel'+ parentId;
-			 var catgName = prompt("Please Add your subcategory name");
+			 var catgName = prompt("Please Add your subMenu");
 			 if(catgName == ''){
 				catgName = ' P#'+parentId+' Catg#'+counter;
 			 }
@@ -92,9 +92,9 @@
 					 'aria-expanded="'+ariaExpanded+'" aria-controls="collapse'+ counter+'"> '+catgName+' </a><div class="actions_div" style="position: relative; top: -26px;">' +
 					 '<a href="#" accesskey="'+counter +'" class="remove_ctg_panel exit-btn pull-right"><span class="glyphicon glyphicon-remove"></span></a>' +
 					 '<a href="#" accesskey="'+ counter +'" class="edit_ctg_label pull-right"><span class="glyphicon glyphicon-edit"></span> Edit</a>' +
-					 '<a href="#" accesskey="'+ counter +'" class="pull-right"> <span class="glyphicon glyphicon-plus"></span>Add answer</a></h4></div>'+
+					 '<a href="#" accesskey="'+ counter +'" class="pull-right" id="addButton2"> <span class="glyphicon glyphicon-plus"></span> Add child category</a></h4></div>' +
 					 '<div id="collapse'+ counter+'" class="panel-collapse collapse '+expandedClass+'"role="tabpanel" aria-labelledby="heading'+counter+'">'+
-					 '<div class="panel-body"><div id="TextBoxDiv'+ counter +'"></div><a class="btn btn-xs btn-primary" accesskey="'+ counter +'" id="addButton3" ><span class="glyphicon glyphicon-plus"></span> Add New Attributes</a>' +
+					 '<div class="panel-body"><div id="TextBoxDiv'+ counter +'"></div><a class="btn btn-xs btn-primary" accesskey="'+ counter +'" id="addButton3" ><span class="glyphicon glyphicon-plus"></span>Add Answer</a>' +
 					 '<a class="btn btn-xs btn-success" accesskey="'+ counter +'" id="ajax_submit_button" >Done</a></div></div></div></div>');
 				
 				x++;
@@ -110,10 +110,7 @@
 				counter--;
 				x--;
 	     });
-	     
-		 
-		 
-		 
+	    		 
 	     var y = 1; 
 	     $(wrapper).on("click","#addButton3", function(e){
 	         e.preventDefault();
@@ -141,7 +138,6 @@
 			
      });
   });
-
 </script>
 <style>
     #accordion .panel-heading {
