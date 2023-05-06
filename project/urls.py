@@ -19,5 +19,7 @@ from django.urls import path , include
 urlpatterns = [
     path('admin/',admin.site.urls),
     path('', include(('chatbot_project.urls2','chatbot_project'),namespace = 'chatbot_project')),
+    path('', include(('trained.urls','trained'),namespace = 'trained')),
+
 
 ]

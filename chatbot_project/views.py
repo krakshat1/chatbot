@@ -94,10 +94,10 @@ def chatBot(request):
    train_x = list(training[:,0])
    train_y = list(training[:,1])
 
-   model = Sequential([Dense(128, input_shape = (len(train_x[0]),),activation='relu'),Dropout(0.2),Dense(64, activation='relu'),Dropout(0.2),Dense(len(train_y[0]),activation = 'softmax')])
+   model = Sequential([Dense(128, input_shape = (len(train_x[0]),),activation='relu'),Dropout(0.2),Dense(64, activation='relu'),Dropout(0.1),Dense(len(train_y[0]),activation = 'softmax')])
    sgd = tensorflow.keras.optimizers.SGD(learning_rate=0.01, decay = 1e-6, momentum = 0.9, nesterov = True)
    model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-   history = model.fit(np.array(train_x),np.array(train_y),epochs=20,batch_size=1,verbose=7)
+   history = model.fit(np.array(train_x),np.array(train_y),epochs=50,batch_size=1,verbose=7)
    # model.save('chatbot_model.model',history)
 
 
@@ -130,6 +130,7 @@ def chatBot(request):
 
    def get_response(intents_list , intents_json):
       tag = intents_list[0]['intent']
+      print(tag)
       # print(tag)
       list_of_intents = intents_json['intents']
       for i in list_of_intents:

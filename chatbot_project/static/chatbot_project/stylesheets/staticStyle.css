@@ -35,21 +35,23 @@ body {
   box-shadow: 10px 10px 5px #aaaaaa;
   cursor: pointer;
 }
-
+.chat-head {
+    font-size: 15px;
+    padding: 10px;
+}
 .container {
-  position: absolute;
-  right: 30px;
-  /*Right and bottom are set to position the chat bot window in the right-corner of the screen*/
-  bottom: 60px;
-  width: 450px;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 10px 10px 5px #aaaaaa;
-  background-color: dodgerblue;
-  border: 2px solid dodgerblue;
-  border-radius: var(--chatBot_windowCommonRadius);
-  z-index: var(--chatBot_ZIndex);
+      position: absolute;
+    right: 30px;
+    bottom: 60px;
+    width: 438px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    background-color: dodgerblue;
+    border: 2px solid dodgerblue;
+    border-radius: var(--chatBot_windowCommonRadius);
+    z-index: var(--chatBot_ZIndex);
 }
 
 .header {

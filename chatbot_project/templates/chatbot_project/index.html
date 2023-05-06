@@ -16,10 +16,41 @@
 
   <!-- Dynamic CSS -->
   <style>
+
     :root {
       --fadeIn_fadeOut_transition_speed: 300ms;
     }
+    .chat-bot {
+            float: right;
+            border: 1px solid beige;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            width: 20%;
+        }
 
+        .input-field {
+            margin: 5px 0 5px 0;
+            border: 1px solid #747474;
+            padding: 10px 9px;
+            color: #000 !important;
+            width: 100%;
+        }
+
+        .ct-submit {
+            border: 1px solid #e0e0e0;
+            width: 100%;
+            font-size: 13px;
+            line-height: 21px;
+            font-weight: 500;
+            color: #fff;
+            outline: none;
+            resize: none;
+            padding: 6px 10px;
+            border-radius: 3px;
+            background: rgb(12 32 46);
+            cursor: pointer;
+}
     /*Bot typing animation*/
     .circle:nth-child(1),
     .circle:nth-child(2),
@@ -80,22 +111,120 @@
       transition-property: opacity, background-color, transform;
       z-index: var(--chatBot_ZIndex);
     }
+    /*.button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 10px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 70%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}*/
+
+.button-64 {
+    align-items: center;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 10px;
+    justify-content: center;
+    line-height: 10px;
+    max-width: 60%;
+    min-width: 140px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-top: 10px;
+}
+span.text {
+    font-size: 11px !important;
+}
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+.online_chat img {
+    height: 8px;
+    width: 8px !important;
+    padding: 0px !important;
+}
+
+span.online_chat {
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+    font-size: 11px;
+}
+.bg-chatbot {
+    background: url(https://img.freepik.com/free-vector/cerulean-blue-curve-frame-template_53876-99029.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.header h4 {
+    position: relative;
+    color: #fff;
+    margin-top: 18px;
+}
   </style>
 
 
 </head>
 
-<body>
+<body class="bg-chatbot">
   <div id="botWindow" class="container fade-in-transition hidden">
     <div class="header">
       <div class="header">
-        <h1>pheonix</h1>
+        
         <img src="{% static 'chatbot_project/images/bot.png'%}">
+        <h4>Vert-Bot <span class="online_chat"><img src="https://www.pngkey.com/png/full/417-4174990_how-to-set-use-small-green-dot-icon.png"> online</span></h4>
       </div>
       <button class="hideBot fade-out-transition" type="button" onclick="hideBotFun()">X</button>
     </div>
     <div class="body">
-      <p class="bot_message">Hi! How can I help you ? </p>
+      <img src="https://192.168.1.13/vertage/images/logo-color.png">
     </div>
     <!-- Bot Typing animation -->
     <div class="botTyping-bg">
@@ -103,7 +232,7 @@
         <div class="circle"></div>
         <div class="circle"></div>
         <div class="circle"></div>
-        <span>pheonix is typing</span>
+        <span>Vert-Bot is typing</span>
       </div>
     </div>
     {%csrf_token%}
@@ -114,14 +243,19 @@
       </div>
     </form>
   </div>
+
   <!-- Here is the pheonix dialog message box to catch user's attention -->
   <div class="popup-dialog fade-in-transition hidden">
     <div class="pheonix-popup-dialog">
-      <span>Hi there, I'm pheonix. <br>How may I help you today?</span>
+      <!-- <span>Hi there, I'm pheonix. <br>How may I help you today?</span> -->
     </div>
-    <div class="attention"></div>
-    <div class="down-triangle"></div>
+    <!-- <div class="attention"></div>
+    <div class="down-triangle"></div> -->
   </div>
+  <img src="https://192.168.1.13/vertage/images/logo-color.png" style="
+  width: 32%;
+  margin-top: 217px;
+">
   <button id="showBotbtn" class="showBot fade-in-transition" type="button" onclick="showBotFun()">Chat</button>
 
 
@@ -153,19 +287,87 @@
 
     // updates the chats
     function updateChatText() {
+
       let html = "";
-      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><div id="chatbot-chat"><button class="chat-bt mt-1 " name ="query"  id = "myButton" onclick = "controlflow(this)" value = "';
+      let text = "";
+      let botHtmlTag = `<div class = "bot-message-block floatup-msg bot-img"><div id="chatbot-chat"><button class="chat-bt mt-1 " name ="query"  id = "myButton" onclick = "controlflow(this)">`;
      
       let userHtmlTag = '<div class = "user-message-block floatup-msg"><img class = "user-profile"  src="{% static "chatbot_project/images/user.png"%}"><p class= user_message>';
       messages.slice().reverse().forEach(function (item, index) {
         if (item.name === "Bot") {
           if (item.message.includes("https://") == true){
-            html += botHtmlTag + item.message +'">'+item.message +'</button></div>'
+            html += botHtmlTag +item.message +`</button></div>`
           }
-          else{
-            html += `<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><button name ="query"  id = "myButton" onclick = "controlflow(this)" value = "${item.message}"<a class= bot_message href="${item.message}">${item.message}</a></button></div>`
+           
+           else if (item.message.includes("details") == true) {
+            html+=`<body class="chat-bot" style="display:block; height:250px;">
+
+    <div class="form">
+        <form action="" id="register-form" novalidate="novalidate">
+
+            <div class="">
+            <h5>${item.message}</h5>
+                <input type="text" class="input-field" name="name" placeholder="Your Name" required><br>
+            </div>
+
+            <div class="">
+                <input type="email" class="input-field" name="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="">
+                <input type="number" class="input-field" name="phone" placeholder="Your Mobile No." maxlength="10"
+                    required><br>
+            </div>
+
+            <div class="">
+                <input type="textarea" class="input-field" name="message" placeholder="Ask Something" rows="3"
+                    required><br><br>
+            </div>
+
+            <div class="">
+                <input class="ct-submit" type="submit" value="submit" onclick = "controlflow(this)">
+            </div>
+
+        </form>
+    </div>
+
+</body>` 
+           }
+           else if (item.message.includes("welcome") == true) {
+            html += `<h3 class="chat-head" style="color: whitesmoke;">Hello!
+Welcome to Bank cares – Your Digital Assistant for any query related to  Bank. Let’s Chat!</h3
+            
+<button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text">Welcome</span></button>`
+
+           }
+           else if (item.message.includes("As per our records") == true){
+            html += `<h3 class="chat-head" style="color: whitesmoke;">As per our record your account balance is $78454854</h3>            <button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text"></span></button>`
+ 
           }
-        } else {
+           else if (item.message.includes("your account number") == true){
+            html += `<h3 class="chat-head" style="color: whitesmoke;">As per our record your account balance is $78454854</h3
+            
+              <button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text"></span></button>`
+
+           }
+           else if (item.message.includes("you loan number is") == true){
+            html += `<h3 class="chat-head" style="color: whitesmoke;">As per our record your loan number is BR-789469</h3
+            
+              <button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text"></span></button>`
+
+           }
+           else if (item.message.includes("your fixed deposite numbers ") == true){
+            html += `<h3 class="chat-head" style="color: whitesmoke;">As per our record your fixed deposite number is 54854</h3
+            
+<button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text"></span></button>`
+
+           }
+        else{
+            html += `
+<button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "${item.message}"><span class="text">${item.message}</span></button>`
+          }
+        } 
+        else {
           html += userHtmlTag + item.message + '</p></div>'
         }
       });
@@ -181,6 +383,8 @@
     function showBotFun() {
       // Initialize Variables
       const chatBotWindow = document.getElementById("botWindow");
+      const chatMessage = document.querySelector(".body");
+      chatMessage.innerHTML = ``;
 
       //Main Logic to show chatBot
       chatBotWindow.style.opacity = 0;
@@ -205,9 +409,19 @@
       }, fadeIn_fadeOut_transition_speed);
 
       if (messages.length == 0) {
-        let msg2 = { name: 'Bot', message: '<div id="chatbot-chat"><div><button " value = "hi" name ="query" onclick = "controlflow(this)">Click Here 👀</button></div>'};
+        const chatMessage = document.querySelector(".body");
+        chatMessage.innerHTML = `<h3 class="chat-head" style="color: whitesmoke;">Hello!
+Welcome to Bank cares  Your Digital Assistant for any query related to  Bank. Let s Chat!</h3>`;
+
+        const arr = ["welcome", "Balance & Statement", "Credit Card Services","Apply for New Products","Open Fixed Deposit Now!","Convert to EMI","Apply for Hospital Daily Cash Policy","MyCard App"];
+        for (let i = 0; i < arr.length; i++) {
+        var button = arr[i];
+      let msg2 = { name: 'Bot', message: button};
         messages.push(msg2);
         updateChatText();
+        scrollToBottom();
+      }
+
       }
     }
 
@@ -295,14 +509,19 @@
       })
         // This steps should be done if the input is successfully submitted to the bot and get response
         .done(function (response) {
+          var buttons  = response.Bot
           const botRes = JSON.stringify(response);
           const obj = JSON.parse(botRes);
-          let msg2 = { name: "Bot", message: obj.Bot };
-          messages.push(msg2);
-          updateChatText();
-          submit_btn.disabled = false;
+          for (var i = 0; i < buttons.length; i++) {
+          var button = buttons[i];
+          let msg2 = { name: "Bot", message: button };
+         messages.push(msg2);
+         updateChatText();
+         submit_btn.disabled = false;
           botTyping.classList.add("hidden");
           txtUserInp.value = "";
+         }
+          
         })
         // if any errors they will be thrown into the console
         .fail(function (response) {
@@ -345,10 +564,10 @@
           let msg2 = { name: "Bot", message: button };
          messages.push(msg2);
          updateChatText();
+         scrollToBottom();
          var myVariable = button ;
-         
-        }
 
+        }
         // alert(res);
         // alert(obj.Bot);
          
