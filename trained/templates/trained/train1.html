@@ -32,12 +32,31 @@
 				</div>
 
 			</div>
+			
 			<!-- /.box-footer -->
 		</form>
 	</div>
 </div>
 </div>
 <script>
+	function addText() {
+		const inputField = document.querySelector('input[type="text"]')
+		
+        var container = document.getElementById("container");
+        const inputs = document.getElementsByClassName(inputField.classList);
+		for (let i = 0; i < inputs.length; i++) {
+           
+		   alert(inputs[i].value);
+		   text = inputs[i].value;
+		var paragraph = document.createElement("p");
+        paragraph.textContent = text;
+        container.appendChild(paragraph);
+        input[i].value = "";
+  }
+        
+		
+        
+      }	
         $(document).ready(function(){
 	    var counter = 1;
 	    var wrapper = $("#accordion");
@@ -80,23 +99,23 @@
 			 var catgName = prompt("Please Add your subMenu");
 			 if(catgName == ''){
 				catgName = ' P#'+parentId+' Catg#'+counter;
+				alert(catgName)
 			 }
 			if(catgName != null){
 				var ariaExpanded = false;
 				var expandedClass = '';
 				var collapsedClass = 'collapsed';
-			
-				  $(wrapper).find(parentPanel).append('<div class="col-sm-12" style="margin-bottom: 0;"><div class="panel panel-default" id="panel'+counter+'">' + 
-				     '<div class="panel-heading" role="tab" id="heading'+counter+'"><h4 class="panel-title">' +
-					 '<a class="'+collapsedClass+'" id="panel-lebel'+ counter +'" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'+ counter+'" ' +
-					 'aria-expanded="'+ariaExpanded+'" aria-controls="collapse'+ counter+'"> '+catgName+' </a><div class="actions_div" style="position: relative; top: -26px;">' +
-					 '<a href="#" accesskey="'+counter +'" class="remove_ctg_panel exit-btn pull-right"><span class="glyphicon glyphicon-remove"></span></a>' +
-					 '<a href="#" accesskey="'+ counter +'" class="edit_ctg_label pull-right"><span class="glyphicon glyphicon-edit"></span> Edit</a>' +
-					 '<a href="#" accesskey="'+ counter +'" class="pull-right" id="addButton2"> <span class="glyphicon glyphicon-plus"></span> Add child category</a></h4></div>' +
-					 '<div id="collapse'+ counter+'" class="panel-collapse collapse '+expandedClass+'"role="tabpanel" aria-labelledby="heading'+counter+'">'+
-					 '<div class="panel-body"><div id="TextBoxDiv'+ counter +'"></div><a class="btn btn-xs btn-primary" accesskey="'+ counter +'" id="addButton3" ><span class="glyphicon glyphicon-plus"></span>Add Answer</a>' +
-					 '<a class="btn btn-xs btn-success" accesskey="'+ counter +'" id="ajax_submit_button" >Done</a></div></div></div></div>');
-				
+	   		
+				  $(wrapper).find(parentPanel).append('<div class="col-sm-12" style="margin-bottom: 0;"><div class="panel panel-default" id="panel'+ counter +'">' + 
+				     '<div class="panel-heading" role="tab" id="heading'+ counter +'"><h4 class="panel-title">' +
+					 '<a class="'+collapsedClass+'" id="panel-lebel'+ counter +'" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'+ counter +'" ' +
+					 'aria-expanded="'+ariaExpanded+'" aria-controls="collapse'+ counter +'"> '+catgName+' </a><div class="actions_div" style="position: relative; top: -26px;">' +
+					 '<a href="#" accesskey="'+ counter +'" class="remove_ctg_panel exit-btn pull-right"><span class="glyphicon glyphicon-remove"></span></a>' +
+					 
+
+					 '<a href="#" accesskey="'+ counter +'" class="edit_ctg_label pull-right"><span class="glyphicon glyphicon-edit "></span> Edit</a>' +
+					 '<a href="#" accesskey="'+ counter +'" class="pull-right" id="addButton2"> <span class="glyphicon glyphicon-plus"></span> Add SubMenu</a></div></h4></div>'+
+					 '<div id="container"><input type="text" id="newText" placeholder="Enter text here" class = "inputdev'+counter  +'"><button onclick="addText()">Add</button></div>');
 				x++;
 				counter++;
 			}
@@ -133,12 +152,13 @@
 			 }
 			 if(catgName != null){
 				 $('#panel'+panelId).find("#panel-lebel"+panelId).html('').html(catgName);
-			 }
-				
-			
+			 }		
      });
+	 
   });
 </script>
+
+
 <style>
     #accordion .panel-heading {
     padding: 0;
@@ -180,3 +200,35 @@ margin-left:7px;
 float: left;
 }
 </style>
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Button Example</title>
+  </head>
+  <body>
+    <button onclick="executeChoice()">Click me</button>
+    <script>
+      function executeChoice() {
+        if (window.confirm("Do you want to execute option A?")) {
+          // User clicked "OK" for option A
+          console.log("User chose option A");
+          // Add your code here to execute option A
+          document.write("<h1>Option A executed</h1>");
+        } else {
+          // User clicked "Cancel" or "OK" for option B
+          if (window.confirm("Do you want to execute option B?")) {
+            // User clicked "OK" for option B
+            console.log("User chose option B");
+            // Add your code here to execute option B
+            document.write("<h1>Option B executed</h1>");
+          } else {
+            // User clicked "Cancel" for option B
+            console.log("User cancelled");
+            // Add your code here to handle the cancellation
+          }
+        }
+      }
+    </script>
+  </body>
+</html> -->
