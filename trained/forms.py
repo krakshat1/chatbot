@@ -26,4 +26,4 @@ class NodeForm(forms.ModelForm):
 
     class Meta:
         model = Node
-        fields = ['name', 'parent']
+        fields = ['name', 'parent','answer']
