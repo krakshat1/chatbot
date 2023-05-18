@@ -17,3 +17,14 @@ class Node(models.Model):
     answer = models.CharField(max_length=100,null=True, blank=True)
     def __str__(self):
         return self.name
+
+class ActivityLog(models.Model):
+    activity = models.CharField(max_length=255)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    ip_address = models.GenericIPAddressField()
+    device = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.activity
+
