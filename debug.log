@@ -1,0 +1,4 @@
+2023-05-17 04:52:35,472 django.request WARNING  Not Found: /favicon.ico
+2023-05-17 05:04:45,465 trained.views ERROR    Test!!
+2023-05-17 05:08:35,060 django.utils.autoreload INFO     /home/phoenix/Downloads/Aapi-Ai-Django-ChatBot-main/project/settings.py changed, reloading.
+2023-05-17 05:09:11,439 django.utils.autoreload INFO     /home/phoenix/Downloads/Aapi-Ai-Django-ChatBot-main/trained/views.py changed, reloading.

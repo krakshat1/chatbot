@@ -1,0 +1,415 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<form method="POST">
+    {%csrf_token%}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Answer</label>
+    <input type="text" nmae = 'answer' class="form-control" id="exampleInputPassword1">
+  </div>
+ 
+  <input type="submit" value="Add submenu">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .p-0 {
+            padding: 0;
+        }
+
+        .m-0 {
+            margin: 0;
+        }
+
+        .row {
+            margin: 0;
+            display: flex;
+        }
+
+        .container-fld {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cont {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pnl {
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .pnl-body {
+            padding: 20px;
+        }
+
+        .pnl-header {
+            text-align: center;
+            padding: 5px 0px;
+            /* background: linear-gradient(337deg, rgba(2, 0, 36, 1) 0%, rgba(14, 9, 121, 1) 43%, rgba(0, 212, 255, 1) 100%); */
+            background: linear-gradient(357deg, rgba(73, 168, 203, 1) 0%, rgba(77, 181, 219, 1) 99%);
+            color: #fff;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .pnl-heading {
+            padding: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .pnl-btn {
+            font-size: inherit;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: linear-gradient(357deg, rgba(73, 168, 203, 1) 0%, rgba(77, 181, 219, 1) 99%);
+            color: #fff;
+            border: 2px solid;
+            padding: 7px 20px;
+            border-radius: 19px;
+        }
+
+        .pnl-btn-hov2:hover {
+            color: rgb(46 71 163);
+            background: #fff;
+        }
+
+        .pnl-btn-hov1:hover {
+            transform: rotate(5deg) translate(-3px, 2px) scale(1, 1.1) skew(-4deg, -4deg);
+            text-shadow: -7px 5px 0px rgb(255 255 255 / 30%);
+        }
+
+        .sub-menu {
+            border-bottom: 1px solid;
+            border-right: 1px solid;
+            border-left: 1px solid;
+            border-color: #dbdada;
+        }
+
+        .icon-stl:hover {
+            top: -3px !important;
+            position: relative;
+        }
+
+        a.pnl-btn {
+            text-decoration: none;
+        }
+
+        .icon-stl {
+            font-size: 20px;
+            color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+            transition: .9s;
+        }
+
+        .input_div {
+            box-shadow: inset rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border: none;
+            padding: 0px 0px 0px 10px;
+            border-radius: 25px;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: inset rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+        }
+
+        .input-field {
+            border: none;
+            background: none;
+            width: 100%;
+        }
+
+        .input-field:focus-visible {
+            outline: none;
+        }
+
+        .add-menu-btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+        }
+
+        .side-bar {
+            background: linear-gradient(357deg, rgba(73, 168, 203, 1) 0%, rgba(77, 181, 219, 1) 99%);
+        }
+
+        .drop-icon {
+            float: right;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .overflow-y {
+            overflow-y: scroll;
+            height: 400px;
+        }
+
+        .action_icon_list {
+            padding: 0;
+            text-align: center;
+            margin: 0;
+        }
+
+        .action_icons {
+            list-style-type: none;
+        }
+
+        .list-items {
+            display: none;
+            color: #000;
+            list-style-type: none;
+        }
+
+        .icon-stl:hover .list-items {
+            display: block;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .list-items {
+            padding: 0;
+        }
+
+        .dropdown li {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .list-name {
+            padding: 15px 5px;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 600;
+            line-height: 14px;
+            text-transform: uppercase;
+        }
+
+        .input-trash {
+            background: linear-gradient(357deg, rgba(73, 168, 203, 1) 0%, rgba(77, 181, 219, 1) 99%);
+            border-radius: 78px;
+            font-size: 13px;
+            width: 32px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mb-1 {
+            margin-bottom: 1rem;
+        }
+
+        .p-2 {
+            padding: 2rem;
+        }
+
+        .text-align-right {
+            text-align: right;
+        }
+
+        ul.drop-listt li {
+            display: inline;
+        }
+
+
+        .my-drop {
+            list-style-type: none;
+            display: flex;
+            padding: 0px;
+            float: right;
+        }
+
+        ul.my-drop li {
+            padding: 2px;
+        }
+
+
+        /* .dropdown {
+	background: orange;
+	visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+	position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+	left: 0;
+  display: none;
+} */
+
+        .dropdown {
+            background: orange;
+            visibility: hidden;
+            opacity: 0;
+            min-width: 10rem;
+            position: absolute;
+            transition: all 0.5s ease;
+            left: 38px;
+            display: none;
+            background: linear-gradient(357deg, rgba(73, 168, 203, 1) 0%, rgba(77, 181, 219, 1) 99%);
+            color: #fff !important;
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 1px;
+            z-index: 9;
+        }
+
+        .drop-li:hover .dropdown {
+            visibility: visible;
+            opacity: 1;
+            display: block;
+        }
+
+        ul.dropdown li {
+            padding: 10px;
+        }
+
+        ul.dropdown li a {
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .align {
+            align-self: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container-fld">
+        <div class="cont">
+            <div class="col-md-12">
+                <div class="pnl">
+                    
+
+                    <form class="form" method="POST" >
+                        {%csrf_token%}
+                        <!-- /***** Menu Button *******/ -->
+                       
+
+                        <div class="overflow-y">
+                            <!-- /***** Side Bar with Menu name *******/ -->
+                            <div class="pnl-inner-body">
+                                <div class=" pnl-body row m-0">
+
+                                    <div class=" col-md-12 p-0">
+                                        {% for item in data %}
+                                        <div class="pnl-heading row">
+                                            <div class="col-md-10 align">
+                                                <div id="pnl-lebel1" class="menu-name">{{item.name}}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 p-0 text-align-right">
+                                                <ul class=" my-drop">
+                                                    <li class="drop-li "><a href="#"></a>
+                                                        <i class="fa fa-plus icon-stl input-trash"
+                                                            aria-hidden="true"></i>
+                                                        <ul class="dropdown">
+                                                            <li><a href="{%url 'trained:add_submenu' item.id%}">Add Submenu</a></li>
+                                                            <li><a href="#">Add Answer</a></li>
+                                                        </ul>
+                                                    <li><a href="{% url 'trained:edit_menu' item.id %}"><i
+                                                                class="fa fa-pencil-square-o icon-stl input-trash"
+                                                                aria-hidden="true"></i></a></li>
+                                                    </li>
+                                                    <li><a href="{% url 'trained:delete_menu' item.id %}"><i class="fa fa-trash icon-stl input-trash"
+                                                                aria-hidden="true"></i></a></li>
+                                                                
+                                                                
+
+                                                    <li><a href=""><i class="fa fa-caret-down icon-stl input-trash"
+                                                                aria-hidden="true"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {%endfor%}
+                                                                                <!-- /******* Add Answer Field *******/ -->
+                                       
+                                        <!-- /******* Add Answer Field *******/ -->
+                                    </div>
+                                </div>
+                                <!-- /***** Side Bar with Menu name *******/ -->
+
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+
+    <!-- <script>
+        function show_hide() {
+            var click = document.getElementById("list-items");
+            if (click.style.display === "none") {
+                click.style.display = "block";
+            } else {
+                click.style.display = "none";
+            }
+        }
+    </script> -->
+
+
+
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.filter-link').click(function(e) {
+        e.preventDefault();
+        
+        var id = $(this).data('id');
+        alter(id)
+
+        $.ajax({
+            url: '/my_view/' + id + '/',
+            method: 'GET',
+            success: function(response) {
+          var options = response.options;
+          var dropdown = $('#my-dropdown');
+          
+          // Clear previous options
+          dropdown.empty();
+          
+          // Generate dropdown options dynamically
+          for (var i = 0; i < options.length; i++) {
+            var option = $('<option>').val(options[i]).text(options[i]);
+            dropdown.append(option);
+          }
+        }
+     
+        });
+    });
+});
+</script>

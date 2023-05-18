@@ -22,6 +22,7 @@ urlpatterns = [
     path('home/', views.chatBot,name='chatBot'),
     path('question/', views.question,name='chatBot2'),
     path('interview/', views.interview,name='chatBot3'),
-    path('interview2/', views.interview2,name='chatBot4')
+    path('interview2/', views.interview2,name='chatBot4'),
+    path('show_chatbot/<str:pk>/', views.show_chatbot,name='show_chatbot')
     ]
 

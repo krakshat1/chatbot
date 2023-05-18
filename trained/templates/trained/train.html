@@ -324,7 +324,7 @@
                                                         <i class="fa fa-plus icon-stl input-trash"
                                                             aria-hidden="true"></i>
                                                         <ul class="dropdown">
-                                                            <li><a href="#">Add Submenu</a></li>
+                                                            <li><a href="{%url 'trained:add_submenu' item.id%}">Add Submenu</a></li>
                                                             <li><a href="#">Add Answer</a></li>
                                                         </ul>
                                                     <li><a href="{% url 'trained:edit_menu' item.id %}"><i
@@ -333,29 +333,15 @@
                                                     </li>
                                                     <li><a href="{% url 'trained:delete_menu' item.id %}"><i class="fa fa-trash icon-stl input-trash"
                                                                 aria-hidden="true"></i></a></li>
+                                                                
+
                                                     <li><a href=""><i class="fa fa-caret-down icon-stl input-trash"
                                                                 aria-hidden="true"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         {%endfor%}
-
-                                        <!-- /******* Add Answer Field *******/ -->
-                                        <div id="collapse1" class="sub-menu">
-                                            <div class="pnl-body">
-                                                <div class="input_div mb-1">
-                                                    <input type="text" id="" class="input-field"
-                                                        placeholder="Add Answer..">
-                                                    <a href="#"></a><i class="fa fa-check icon-stl input-trash"
-                                                        aria-hidden="true"></i></span></a>
-                                                    <a href="#"> <i class="fa fa-trash icon-stl input-trash"
-                                                            aria-hidden="true"></i></span></a>
-                                                </div>
-                                                
-                                                
-                                            </div>
-
-                                        </div>
+                                        
                                         <!-- /******* Add Answer Field *******/ -->
                                     </div>
                                 </div>
@@ -368,8 +354,7 @@
         </div>
     </div>
 
-
-
+  
 
 
     <!-- <script>
@@ -388,3 +373,33 @@
 </body>
 
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.filter-link').click(function(e) {
+        e.preventDefault();
+        
+        var id = $(this).data('id');
+        alter(id)
+
+        $.ajax({
+            url: '/my_view/' + id + '/',
+            method: 'GET',
+            success: function(response) {
+          var options = response.options;
+          var dropdown = $('#my-dropdown');
+          
+          // Clear previous options
+          dropdown.empty();
+          
+          // Generate dropdown options dynamically
+          for (var i = 0; i < options.length; i++) {
+            var option = $('<option>').val(options[i]).text(options[i]);
+            dropdown.append(option);
+          }
+        }
+     
+        });
+    });
+});
+</script>

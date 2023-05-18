@@ -255,7 +255,19 @@
                    "<- BACk TO previous"
                   
                ]
-             }
+             },
+             {
+                "tag":"15",
+                "patterns":[
+                    "what is your name ?"
+                 ],
+                 "responses":[ 
+                    "bhoot",
+                     "prait",
+                     "dayan"
+                    
+                 ]
+               }
              
              
        
