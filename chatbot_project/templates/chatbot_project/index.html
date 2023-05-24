@@ -218,8 +218,8 @@ span.online_chat {
     <div class="header">
       <div class="header">
         
-        <img src="{% static 'chatbot_project/images/bot.png'%}">
-        <h4>Vert-Bot <span class="online_chat"><img src="https://www.pngkey.com/png/full/417-4174990_how-to-set-use-small-green-dot-icon.png"> online</span></h4>
+        <img src="{{queryset.image.url }}" alt="My Image">
+        <h4>{{queryset.heading}} <span class="online_chat"><img src="https://www.pngkey.com/png/full/417-4174990_how-to-set-use-small-green-dot-icon.png"> online</span></h4>
       </div>
       <button class="hideBot fade-out-transition" type="button" onclick="hideBotFun()">X</button>
     </div>

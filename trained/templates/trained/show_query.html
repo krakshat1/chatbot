@@ -1,0 +1,128 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Add the jQuery library -->
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <!-- Add the Bootstrap JavaScript file after jQuery -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">show query form</h2>
+              
+              <form id="fields-form" method="POST" action="">
+                  {% csrf_token %}
+                  <div class="form-outline mb-4" id = "fields-container">
+                    
+                    <label class="form-label" for="form3Example1cg">ID</label>
+                    <input type="text" name="id">
+                 
+                  </div>
+                  {%for view in my_view%}
+                <div class="form-outline mb-4" id = "fields-container">
+                  <label class="form-label" for="form3Example1cg">{{view.input_label}}</label>
+                  <input type="{{view.input_type}}" id="form3Example1cg" name = "{{view.input_label}}" />
+               
+                </div>
+                {%endfor%}
+                <div class="form mb-4">
+                    <input type="submit" value="Submit">
+                        </div>
+              </form>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+    .gradient-custom-3 {
+/* fallback for old browsers */
+background: #84fab0;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+}
+.gradient-custom-4 {
+/* fallback for old browsers */
+background: #84fab0;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+</style>
+
+
+<!-- <script>
+// Function to handle the "Add Fields" button click event
+// Function to handle the "Add Fields" button click event
+function addFields() {
+  var userChoice = prompt("Enter your label:"); 
+  // Prompt the user for their choice
+
+  if (userChoice){
+    var container = document.getElementById("fields-container");
+    var dropdown = document.getElementById("myDropdown");
+    var selectedValue = dropdown.value;
+   
+//     dropdown.addEventListener("change", function() {
+//     var selectedValue = dropdown.value;
+//   // Use the selectedValue as needed
+//   alert(selectedValue);
+// });
+    // Create a new div to hold the input field and label
+    var newDiv = document.createElement("div");
+
+    // Create a new input field
+    var inputField = document.createElement("input");
+    inputField.type =selectedValue;
+    inputField.name = userChoice + "_field";
+    inputField.classList.add("form-control-lg");
+    //create a new hidden field 
+    var input_hidden = document.createElement("input");
+    input_hidden.type ='hidden';
+    input_hidden.name = userChoice + "_input_type";
+    input_hidden.value = selectedValue;
+    input_hidden.classList.add("form-control-lg");
+
+    // Create a new label
+    var label = document.createElement("label");
+    label.innerHTML = userChoice;
+    label.setAttribute("for", userChoice + "_field");
+    label.classList.add("form-label");
+
+    // Append the label and input field to the new div
+    newDiv.appendChild(label);
+    newDiv.appendChild(inputField);
+    newDiv.appendChild(input_hidden);
+
+    // Append the new div to the container
+    container.appendChild(newDiv);
+    container.appendChild(document.createElement("br")); // Add a line break
+  }
+}
+
+// Attach event listener to the "Add Fields" button
+var addFieldsBtn = document.getElementById("add-fields-btn");
+addFieldsBtn.addEventListener("click", addFields);
+
+</script> -->
+
+

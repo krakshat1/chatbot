@@ -27,3 +27,10 @@ class NodeForm(forms.ModelForm):
     class Meta:
         model = Node
         fields = ['name', 'parent','answer']
+from django import forms
+from .models import *
+
+class PictureUploadForm(forms.ModelForm):
+    class Meta:
+        model = Admin_panel
+        fields = ['heading','image']

@@ -81,10 +81,20 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'chatbot',
+        'USER': 'akshat',
+        'PASSWORD': 'xspl@123',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -166,3 +176,10 @@ logging=({
         }
     }
 })
+# Add these imports at the top of the file
+import os
+from django.conf import settings
+
+# Add the following lines at the end of the settings.py file
+MEDIA_ROOT = os.path.join(settings.BASE_DIR, 'media')
+MEDIA_URL = '/media/'

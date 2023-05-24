@@ -1,0 +1,47 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<!-- <button id="openButton">Open Text Box</button>
+<div id="textBoxContainer"></div>
+
+  
+
+
+
+<script>
+const openButton = document.getElementById('openButton');
+const textBoxContainer = document.getElementById('textBoxContainer');
+
+openButton.addEventListener('click', function() {
+  // Create text box element
+  const textBox = document.createElement('input');
+  textBox.type = 'text';
+  textBox.id = 'textBox';
+
+  // Create submit button element
+  const submitButton = document.createElement('button');
+  submitButton.textContent = 'Submit';
+
+  // Append text box and submit button to the container
+  textBoxContainer.appendChild(textBox);
+  textBoxContainer.appendChild(submitButton);
+
+  // Add event listener to submit button
+  submitButton.addEventListener('click', function() {
+    const inputText = textBox.value;
+    // Do something with the input text
+    console.log(inputText);
+  });
+});
+
+
+
+</script> -->
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+  

@@ -8,6 +8,10 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from .models import Response, models
 from trained.models import *
+from django.core import serializers
+import pyttsx3
+from django.core.serializers import serialize
+
 #Remove the comments to download additional nltk packages
 import nltk
 nltk.download('punkt')
@@ -22,7 +26,9 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 
 def index(request):
-   return render(request , 'chatbot_project/index.html')
+   queryset = Admin_panel.objects.last()
+   context = {'queryset': queryset}
+   return render(request , 'chatbot_project/index.html',context)
 
 
 def chatBot(request):
@@ -143,16 +149,27 @@ def chatBot(request):
    #       #     result=random.choice(["Sorry:), I didn't get what you are saying"])
    #       #     break
    #    return result
+   
 
    print(" pheonix is Running ! ")
    parent = Node.objects.get(name=query)
    queryset = Node.objects.filter(parent__isnull=False, parent=parent)
    print(queryset)
    data = []
+   engine = pyttsx3.init()
+   engine.setProperty('rate', 150)  # Speed of speech, words per minute (default is 200)
+   engine.setProperty('volume', 1.0)
    for model in queryset:
         data.append(model.name)
+        
+        text = model.name
+        engine.say(text)
+   engine.runAndWait()
+
+
    # print(bot_response)
    return JsonResponse({"Bot": data})
+   #  return JsonResponse({"ad":ad})
 
 def question(request):
    if request.method == "POST":
