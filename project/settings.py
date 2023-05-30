@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-d%v8s^8r_#47oe037fomdq*j50o2x3suj2nljptjqoz68nf++6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'chatbot',
         'USER': 'akshat',
-        'PASSWORD': 'xspl@123',
+        'PASSWORD': '12345',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -140,42 +140,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
-import logging
-import os
-
-
-logging=({
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'console': {
-            'format': '%(name)-12s %(levelname)-8s %(message)s'
-        },
-        'file': {
-            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
-        }
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'console'
-        },
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'file',
-            'filename': os.path.join(BASE_DIR, 'debug.log')
-        }
-    },
-    'loggers': {
-        '': {
-            'level': 'DEBUG',
-            'handlers': ['console', 'file']
-        }
-    }
-})
 # Add these imports at the top of the file
 import os
 from django.conf import settings
