@@ -18,16 +18,18 @@ nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 
-from sklearn.feature_extraction.text import TfidfVectorizer
 
-from tensorflow import keras
-import tensorflow
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Dense, Dropout
 
 def index(request):
    queryset = Admin_panel.objects.last()
-   context = {'queryset': queryset}
+   me = []
+   menu_details = Node.objects.filter(parent__isnull=True)
+
+   for menu in menu_details:
+      me.append('welcome')
+      me.append(menu.name)
+   my_list_json = json.dumps(me)
+   context = {'queryset': queryset,'menu_details':my_list_json}
    return render(request , 'chatbot_project/index.html',context)
 
 
@@ -156,15 +158,15 @@ def chatBot(request):
    queryset = Node.objects.filter(parent__isnull=False, parent=parent)
    print(queryset)
    data = []
-   engine = pyttsx3.init()
-   engine.setProperty('rate', 150)  # Speed of speech, words per minute (default is 200)
-   engine.setProperty('volume', 1.0)
+   # engine = pyttsx3.init()
+   # engine.setProperty('rate', 150)  # Speed of speech, words per minute (default is 200)
+   # engine.setProperty('volume', 1.0)
    for model in queryset:
         data.append(model.name)
         
-        text = model.name
-        engine.say(text)
-   engine.runAndWait()
+   #      text = model.name
+   #      engine.say(text)
+   # engine.runAndWait()
 
 
    # print(bot_response)
@@ -211,7 +213,7 @@ def interview(request):
     return render(request, 'chatbot_project/interview2.html')
 def interview2(request):
    if request.method == "POST":
-         but = str(request.POST.get("but"))
+         but = str(request.POST.get("but"))   
    if request.method == "GET":
       bu = str(request.GET.get("bu"))
 

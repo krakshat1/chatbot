@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+  {% load static %}
+  {%include 'new_folder/base.html'%}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicon -->
+  <link href="documentation/img/vert-favicon.png" rel="icon">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/libs/css/style.css">
+  <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+  <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
+  <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
+  <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
+  <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+  <title>Vert-Age</title>
+
+  <style>
+    div#navbarSupportedContent {
+    width: 500px !important;
+}
+  </style>
+</head>
+
+<body>
+  <!-- ============================================================== -->
+  <!-- main wrapper -->
+  <!-- ============================================================== -->
+  <div class="dashboard-main-wrapper">
+    <!-- ============================================================== -->
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-header">
+      <nav class="navbar navbar-expand-lg bg-white fixed-top">
+
+        <a href="index.html">
+          <img src="{% static 'assets/images/vert-logo.png' %}" alt="" class="logo-brand">
+        </a>
+
+        <div class="collapse navbar-collapse nav-left" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto navbar-right-top">
+            <li class="nav-item">
+              <div id="custom-search" class="top-search-bar">
+                <input class="form-control" type="text" placeholder="Search..">
+              </div>
+            </li>
+            <li class="nav-item dropdown notification">
+              <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span
+                  class="indicator"></span></a>
+            </li>
+            <li class="nav-item dropdown connection">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+            </li>
+            <li class="nav-item dropdown nav-user">
+              <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt=""
+                  class="user-avatar-md rounded-circle"></a>
+              <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                aria-labelledby="navbarDropdownMenuLink2">
+                <div class="nav-user-info">
+                  <h5 class="mb-0 text-white nav-user-name">Person Name</h5>
+                  <span class="status"></span><span class="ml-2">Available</span>
+                </div>
+                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-left-sidebar sidebar-dark">
+      <div class="menu-list">
+          <nav class="navbar navbar-expand-lg navbar-light">
+              <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav flex-column">
+                      <li class="nav-divider">
+                          Menu
+                      </li>
+                      <li class="nav-item ">
+                          <a class="nav-link active" href="{% url 'trained:home'%}" aria-expanded="false" data-target="#submenu-1"
+                              aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span
+                                  class="badge badge-success">6</span></a>
+                          <div id="submenu-1" class="collapse submenu" style="">
+
+                          </div>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'trained:chatbot_view'%}" aria-expanded="false" data-target="#submenu-2"
+                              aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>ChatBot</a>
+
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'trained:chatbot_trainer'%}" aria-expanded="false" data-target="#submenu-3"
+                              aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>ChatBot Trainer</a>
+
+                      </li>
+                      <li class="nav-item ">
+                          <a class="nav-link" href="{% url 'trained:chatbot_details'%}" aria-expanded="false"
+                              data-target="#submenu-4" aria-controls="submenu-4"><i
+                                  class="fas fa-fw fa-file"></i>ChatBot Details</a>
+
+                      </li>
+                      <li class="nav-item ">
+                          <a class="nav-link" href="{% url 'trained:query_form'%}" aria-expanded="false"
+                              data-target="#submenu-4" aria-controls="submenu-4"><i
+                                  class="fab fa-fw fa-wpforms"></i>Query Form</a>
+
+                      </li>
+
+                  </ul>
+              </div>
+          </nav>
+      </div>
+  </div>
+    <!-- ============================================================== -->
+    <!-- end left sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- wrapper  -->
+    <!-- ============================================================== -->
+    <div class="dashboard-wrapper">
+      <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content ">
+          <!-- ============================================================== -->
+          <!-- pageheader  -->
+          <!-- ============================================================== -->
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="page-header">
+                <h2 class="pageheader-title">ChatBot</h2>
+                <div class="page-breadcrumb">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ============================================================== -->
+          <!-- end pageheader  -->
+          <!-- ============================================================== -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <!-- <div class="card-header">
+                  <h4 class="mb-0">Chatbot</h4>
+                </div> -->
+                <div class="card-body">
+
+                  <div class="row">
+                    <div class="col-md-6">
+
+                      
+                      
+
+
+
+                      <div class="col-md-6 mb-3">
+                        <h2 class="pageheader-title ml-neg-1">Bot Theme</h2>
+                        <div class="row pl-2 align-self-center position-relative">
+                            <div class="color-div pr-2">
+                                <button class="color"
+                                    style="background: linear-gradient(115deg, rgb(79, 172, 254), rgb(0, 242, 254));"></button>
+                            </div>
+                            <div class="color-div pr-2">
+                                <button class="color"
+                                    style="background: linear-gradient(115deg, rgb(124, 58, 183), rgb(255, 154, 173));"></button>
+                            </div>
+                            <div class="color-div pr-2">
+                                <button class="color"
+                                    style="background: linear-gradient(115deg, rgb(161, 140, 209), rgb(251, 194, 235));"></button>
+                            </div>
+                            <div class="color-div pr-2">
+                                <button class="color"
+                                    style="background: linear-gradient(115deg, rgb(255, 88, 88), rgb(240, 152, 25));"></button>
+                            </div>
+                            <div class="color-div pr-2">
+                                <button class="color dots-btn" onclick="colorPalette()" id="colorPaletteBtn"><i
+                                        class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
+                         <div id="colorPalette" role="tablist"
+                         aria-multiselectable="true"> 
+                            <!-- <div class="css-15c0g5a e1pryhol4">
+                                <div class="css-1usj5wi e1pryhol3"><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(79, 172, 254), rgb(0, 242, 254));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(124, 58, 183), rgb(255, 154, 173));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(161, 140, 209), rgb(251, 194, 235));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(255, 154, 158), rgb(250, 208, 196));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(255, 88, 88), rgb(240, 152, 25));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(250, 112, 154), rgb(254, 187, 64));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(253, 160, 133), rgb(246, 211, 101));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(218, 164, 117), rgb(255, 224, 185));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(138, 113, 109), rgb(232, 183, 148));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(171, 236, 214), rgb(251, 237, 150));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(58, 165, 96), rgb(183, 230, 108));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(0, 201, 255), rgb(146, 254, 157));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(19, 84, 122), rgb(128, 208, 199));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(223, 233, 243), rgb(255, 255, 255));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(233, 222, 250), rgb(251, 252, 219));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(172, 203, 238), rgb(231, 240, 253));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(147, 165, 207), rgb(228, 239, 233));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(9, 32, 63), rgb(83, 120, 149));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(0, 0, 0), rgb(67, 67, 67));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(10, 14, 136), rgb(0, 177, 206));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(152, 3, 58), rgb(247, 79, 40));"></button><button
+                                        class="css-1rdng5d e1pryhol7"
+                                        style="background: linear-gradient(115deg, rgb(4, 124, 141), rgb(47, 242, 137));"><svg
+                                            width="20" height="20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24" color="#fff"
+                                            class="e1pryhol0 css-1us74xs e11k6mr30"
+                                            style="min-width: 20px; min-height: 20px;">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M20.896 6.023L18.52 4.106A.417.417 0 0018.252 4a.41.41 0 00-.273.11L9.336 15.469s-3.397-3.342-3.493-3.44c-.095-.097-.22-.26-.41-.26-.191 0-.278.137-.377.239-.074.08-1.286 1.38-1.883 2.027-.035.04-.056.061-.086.092A.443.443 0 003 14.38c0 .097.035.177.087.252l.12.115s6.03 5.922 6.13 6.024c.099.102.22.23.397.23.173 0 .316-.19.399-.274l10.78-14.163A.445.445 0 0021 6.306a.462.462 0 00-.104-.283z">
+                                            </path>
+                                        </svg></button></div>
+                                <div class="css-yfyyf7 e1pryhol2"><span
+                                        class="color-selector__color color-selector__color-picker css-1cldb99 e1pryhol1"
+                                        role="button" tabindex="0" id="color-picker"
+                                        style="color: rgb(4, 124, 141);"></span></div>
+                            </div> -->
+                        </div> 
+                    </div>
+
+
+
+
+                    </div>
+
+                    <div class="col-md-6 text-align-right">
+                      <button id="showBotbtn" class="showBot fade-in-transition btn btn-primary" type="button"
+                      onclick="showBotFun()">Chat</button>
+                    </div>
+
+                  </div>
+                      <!----------- chatbot-popup-start --------->
+                      <div id="botWindow" class="container fade-in-transition hidden">
+                        <div class="header">
+                          <div class="header">
+                            <!-- <img src="{{queryset.image.url }}" alt="My Image"> -->
+                            <img src="{% static 'assets/images/vert-favicon.png' %}" alt="" class="chatbot-logo">
+                            <!-- <h4>{{queryset.heading}} <span class="online_chat"> -->
+                            <h4>Chatbot Name<span class="online_chat">
+
+                                <img
+                                  src="https://www.pngkey.com/png/full/417-4174990_how-to-set-use-small-green-dot-icon.png">
+                                online</span>
+                            </h4>
+
+
+                          </div>
+                          <div class="chatbot-nav-icons">
+                            <ul class="header">
+                              <li><i class="fa chatbot-icon">&#xf095;</i></li>
+                              <li><i class="fa chatbot-icon">&#xf03d;</i></li>
+                              <li><i class="fa chatbot-icon">&#xf142;</i></li>
+                              <li><i class="fa hideBot fade-out-transition chatbot-icon" type="button"
+                                  onclick="hideBotFun()">&#xf00d;</i></li>
+
+                              <!-- <li><button class="hideBot fade-out-transition" type="button"
+                              onclick="hideBotFun()">X</button></li> -->
+                            </ul>
+                          </div>
+
+
+                        </div>
+                        <div class="body">
+                          <img src="https://192.168.1.13/vertage/images/logo-color.png">
+                        </div>
+                        <!-- Bot Typing animation -->
+                        <div class="botTyping-bg">
+                          <div class="botTyping hidden">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <span>Vert-Bot is typing</span>
+                          </div>
+                        </div>
+                        {%csrf_token%}
+                        <form id="myForm" value="query">
+                          <div class="footer">
+                            <input id="query" type="text" onkeyup="checkText()" placeholder="Type..." name="query">
+                            <button class="submit_btn" type="submit"> <i class="fa chatbot-icon">&#xf1d9;</i></button>
+                          </div>
+                        </form>
+
+                      </div>
+                      <!----------- chatbot-popup-end --------->
+                    
+                  <div class="popup-dialog fade-in-transition hidden">
+                    <div class="pheonix-popup-dialog">
+                      <!-- <span>Hi there, I'm pheonix. <br>How may I help you today?</span> -->
+                    </div>
+                    <!-- <div class="attention"></div>
+                                        <div class="down-triangle"></div> -->
+                  </div>
+
+                 
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <div class="footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                Copyright <a href="#">Xenottabyte Services Pvt. Ltd.</a> All Rights Reserved.
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="text-md-right footer-links d-none d-sm-block">
+                  <a href="javascript: void(0);">About</a>
+                  <a href="javascript: void(0);">Support</a>
+                  <a href="javascript: void(0);">Contact Us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end footer -->
+        <!-- ============================================================== -->
+      </div>
+      <!-- ============================================================== -->
+      <!-- end wrapper  -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end wrapper  -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- end main wrapper  -->
+  <!-- ============================================================== -->
+  <!-- Optional JavaScript -->
+  <!-- jquery 3.3.1 -->
+  <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+  <!-- bootstap bundle js -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <!-- slimscroll js -->
+  <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+  <!-- main js -->
+  <script src="assets/libs/js/main-js.js"></script>
+  <!-- chart chartist js -->
+  <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+  <!-- sparkline js -->
+  <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+  <!-- morris js -->
+  <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+  <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+  <!-- chart c3 js -->
+  <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+  <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+  <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
+  <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+  <!-- JavaScript -->
+  <script type="text/javascript">
+    "use strict";
+    const fadeIn_fadeOut_transition_speed = 300;
+    const messages = [];
+    let popupDialog = document.querySelector(".popup-dialog")
+
+    // onload function will run when page is rendered
+    window.onload = function () {
+      // ChatBot dialog popup function
+      setTimeout(() => {
+        // ChatBot dialog will only popup if user haven't used the chatBot.
+        if (messages.length === 0) {
+          popupDialog.classList.remove("hidden");
+          popupDialog.style.opacity = 0;
+          setTimeout(() => {
+            popupDialog.style.opacity = 1;
+          }, fadeIn_fadeOut_transition_speed)
+        }
+      }, 5000);
+    }
+
+    // updates the chats
+    function updateChatText() {
+
+      let html = "";
+      let text = "";
+      let botHtmlTag = `<div class = "bot-message-block floatup-msg bot-img"><div id="chatbot-chat"><button class="chat-bt mt-1 " name ="query"  id = "myButton" onclick = "controlflow(this)">`;
+
+      let userHtmlTag = '<div class = "user-message-block floatup-msg"><img class = "user-profile"  src="documentation/img/user.png"><p class= user_message>';
+      messages.slice().reverse().forEach(function (item, index) {
+        if (item.name === "Bot") {
+          if (item.message.includes("https://") == true) {
+            html += botHtmlTag + item.message + `</button></div>`
+          }
+
+          else if (item.message.includes("details") == true) {
+            html += `<body class="chat-bot" style="display:block; height:250px;">
+
+    <div class="form">
+        <form action="" id="register-form" novalidate="novalidate">
+
+            <div class="">
+            <h5>${item.message}</h5>
+                <input type="text" class="input-field" name="name" placeholder="Your Name" required><br>
+            </div>
+
+            <div class="">
+                <input type="email" class="input-field" name="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="">
+                <input type="number" class="input-field" name="phone" placeholder="Your Mobile No." maxlength="10"
+                    required><br>
+            </div>
+
+            <div class="">
+                <input type="textarea" class="input-field" name="message" placeholder="Ask Something" rows="3"
+                    required><br><br>
+            </div>
+
+            <div class="">
+                <input class="ct-submit" type="submit" value="submit" onclick = "controlflow(this)">
+            </div>
+
+        </form>
+    </div>
+
+</body>`
+          }
+          else if (item.message.includes("welcome") == true) {
+            html += `<h3 class="chat-head" style="color: whitesmoke;"><span>Hello!
+Welcome to Bank cares – Your Digital Assistant for any query related to  Bank. Let’s Chat!</span></h3
+            
+<button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text top-wlcm">Welcome</span></button>`
+
+          }
+          else if (item.message.includes("As per our records") == true) {
+            html += `<h3 class="chat-head" style="color: whitesmoke;">As per our record your account balance is $78454854</h3>            <button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text"></span></button>`
+
+          }
+          else if (item.message.includes("your account number") == true) {
+            html += `<h3 class="chat-head" style="color: whitesmoke;">As per our record your account balance is $78454854</h3
+            
+              <button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text"></span></button>`
+
+          }
+          else if (item.message.includes("you loan number is") == true) {
+            html += `<h3 class="chat-head" style="color: whitesmoke;">As per our record your loan number is BR-789469</h3
+            
+              <button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text"></span></button>`
+
+          }
+          else if (item.message.includes("your fixed deposite numbers ") == true) {
+            html += `<h3 class="chat-head" style="color: whitesmoke;">As per our record your fixed deposite number is 54854</h3
+            
+<button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text"></span></button>`
+
+          }
+          else {
+            html += `
+<button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "${item.message}"><span class="text">${item.message}</span></button>`
+          }
+        }
+        else {
+          html += userHtmlTag + item.message + '</p></div>'
+        }
+      });
+      const chatMessage = document.querySelector(".body");
+      chatMessage.innerHTML = html;
+    }
+
+    // To give chat like feel
+    function scrollToBottom() {
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function showBotFun() {
+      // Initialize Variables
+      const chatBotWindow = document.getElementById("botWindow");
+      const chatMessage = document.querySelector(".body");
+      chatMessage.innerHTML = ``;
+
+      //Main Logic to show chatBot
+      chatBotWindow.style.opacity = 0;
+      chatBotWindow.style.transform = `translateY(10%)`;
+      document.querySelector(".container").classList.remove("hidden");
+
+      //Pausing the flow of the code for 0.3 secs
+      setTimeout(() => {
+        chatBotWindow.style.transform = `translateY(0%)`;
+        chatBotWindow.style.opacity = 1;
+      }, fadeIn_fadeOut_transition_speed);
+
+      //Main Logic to hide Chat button
+      const showBot = document.getElementById("showBotbtn");
+      showBot.style.opacity = 0;
+      popupDialog.style.opacity = 0;
+
+      //Pausing the flow of the code for 0.3 secs
+      setTimeout(() => {
+        document.querySelector(".showBot").classList.add("hidden");
+        popupDialog.classList.add("hidden");
+      }, fadeIn_fadeOut_transition_speed);
+
+      if (messages.length == 0) {
+        const chatMessage = document.querySelector(".body");
+        chatMessage.innerHTML = `<h3 class="chat-head" style="color: whitesmoke;">Hello!
+Welcome to Bank cares  Your Digital Assistant for any query related to  Bank. Let s Chat!</h3>`;
+
+        const arr = ["welcome", "Balance & Statement", "Credit Card Services", "Apply for New Products", "Open Fixed Deposit Now!", "Convert to EMI", "Apply for Hospital Daily Cash Policy", "MyCard App"];
+        for (let i = 0; i < arr.length; i++) {
+          var button = arr[i];
+          let msg2 = { name: 'Bot', message: button };
+          messages.push(msg2);
+          updateChatText();
+          scrollToBottom();
+        }
+
+      }
+    }
+
+    function hideBotFun() {
+      // Initialize Variables
+      const showBot = document.getElementById("showBotbtn");
+
+      //Main Logic to show Chat button
+      showBot.style.opacity = 0;
+
+      //Pausing the flow of the code for 0.3 secs
+      document.querySelector(".showBot").classList.remove("hidden");
+      setTimeout(() => {
+        showBot.style.opacity = 1;
+      }, fadeIn_fadeOut_transition_speed);
+
+      //Main Logic to hide chat bot
+      const chatBotWindow = document.getElementById("botWindow");
+      chatBotWindow.style.transform = `translateY(11%)`;
+      chatBotWindow.style.opacity = 0;
+
+      //Pausing the flow of the code for 0.3 secs
+      setTimeout(() => {
+        document.querySelector(".container").classList.add("hidden");
+      }, fadeIn_fadeOut_transition_speed);
+
+
+    }
+
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    // Disable the send button if there is no text in query field
+
+    const regex = /[A-Za-z0-9]/
+    let submit_btn = document.querySelector(".submit_btn");
+    function checkText() {
+      const inp_string = document.querySelector("#query").value
+      if (regex.test(inp_string) === false) {
+        submit_btn.disabled = true
+      } else {
+        submit_btn.disabled = false
+      }
+    }
+
+    // Here is the main code which Posts and gets responses
+    const form1 = document.getElementById("myForm");
+    const botTyping = document.querySelector(".botTyping")
+    const user_input = document.querySelector("#query")
+    const txtUserInp = document.querySelector("#query");
+    form1.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (txtUserInp.value == "") {
+        return
+      }
+      let msg3 = { name: "user1", message: txtUserInp.value }
+      messages.push(msg3);
+      updateChatText();
+      submit_btn.disabled = true;
+      botTyping.classList.remove("hidden");
+
+      $.ajax({
+        type: "GET",
+        url: "{%url 'chatbot_project:chatBot'%}",
+        headers: {
+          "Content-type": "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRFToken": csrftoken,
+        },
+        data: { query: $('#query').val() }
+      })
+        // This steps should be done if the input is successfully submitted to the bot and get response
+        .done(function (response) {
+          var buttons = response.Bot
+          const botRes = JSON.stringify(response);
+          const obj = JSON.parse(botRes);
+          for (var i = 0; i < buttons.length; i++) {
+            var button = buttons[i];
+            let msg2 = { name: "Bot", message: button };
+            messages.push(msg2);
+            updateChatText();
+            submit_btn.disabled = false;
+            botTyping.classList.add("hidden");
+            txtUserInp.value = "";
+          }
+
+        })
+        // if any errors they will be thrown into the console
+        .fail(function (response) {
+          let msg2 = { name: "Bot", messages: "Internal server error, Please reload the page." }
+          messages.push(msg2);
+          updateChatText();
+          scrollToBottom();
+          submit_btn.disabled = false;
+          botTyping.classList.add("hidden");
+          txtUserInp.value = "";
+        })
+    })
+    function controlflow(set) {
+      const form1 = document.getElementById("myForm");
+      const botTyping = document.querySelector(".botTyping");
+
+      var txtUserInp = set.getAttribute('value');
+      if (txtUserInp.value == "") {
+        return
+      }
+      let msg1 = { name: "user1", message: txtUserInp }
+      messages.push(msg1);
+      updateChatText();
+      submit_btn.disabled = true;
+      botTyping.classList.remove("hidden");
+
+      $.ajax({
+        url: "{% url 'chatbot_project:chatBot' %}",
+        type: "POST",
+        data: {
+          'my_variable': txtUserInp,
+          'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        success: function (response) {
+          const res = JSON.stringify(response);
+          const obj = JSON.parse(res);
+          var buttons = response.Bot;
+          for (var i = 0; i < buttons.length; i++) {
+            var button = buttons[i];
+            let msg2 = { name: "Bot", message: button };
+            messages.push(msg2);
+            updateChatText();
+            scrollToBottom();
+            var myVariable = button;
+
+          }
+          // alert(res);
+          // alert(obj.Bot);
+
+          //   var myVariable = button ;
+          //   var button = document.getElementById("myButton");
+          //   button.addEventListener("click", function() {
+          //   button.value = myVariable;
+          // })
+
+          submit_btn.disabled = false;
+          botTyping.classList.add("hidden");
+          txtUserInp.value = "";
+        },
+        error: function (xhr) {
+          console.log(xhr.responseText);
+        }
+      });
+    }
+
+
+     /*********************** color-pallete-js-start **********************/
+     $(document).ready(function () {
+            $("#colorPaletteBtn").on("click", function (e) {
+                $("#colorPalette").append(` <div id="colorPalette">
+                                                    <div class="css-15c0g5a e1pryhol4">
+                                                        <div class="css-1usj5wi e1pryhol3"><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(79, 172, 254), rgb(0, 242, 254));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(124, 58, 183), rgb(255, 154, 173));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(161, 140, 209), rgb(251, 194, 235));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(255, 154, 158), rgb(250, 208, 196));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(255, 88, 88), rgb(240, 152, 25));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(250, 112, 154), rgb(254, 187, 64));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(253, 160, 133), rgb(246, 211, 101));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(218, 164, 117), rgb(255, 224, 185));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(138, 113, 109), rgb(232, 183, 148));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(171, 236, 214), rgb(251, 237, 150));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(58, 165, 96), rgb(183, 230, 108));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(0, 201, 255), rgb(146, 254, 157));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(19, 84, 122), rgb(128, 208, 199));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(223, 233, 243), rgb(255, 255, 255));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(233, 222, 250), rgb(251, 252, 219));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(172, 203, 238), rgb(231, 240, 253));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(147, 165, 207), rgb(228, 239, 233));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(9, 32, 63), rgb(83, 120, 149));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(0, 0, 0), rgb(67, 67, 67));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(10, 14, 136), rgb(0, 177, 206));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(152, 3, 58), rgb(247, 79, 40));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(4, 124, 141), rgb(47, 242, 137));"><svg
+                                                                    width="20" height="20"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" color="#fff"
+                                                                    class="e1pryhol0 css-1us74xs e11k6mr30"
+                                                                    style="min-width: 20px; min-height: 20px;">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M20.896 6.023L18.52 4.106A.417.417 0 0018.252 4a.41.41 0 00-.273.11L9.336 15.469s-3.397-3.342-3.493-3.44c-.095-.097-.22-.26-.41-.26-.191 0-.278.137-.377.239-.074.08-1.286 1.38-1.883 2.027-.035.04-.056.061-.086.092A.443.443 0 003 14.38c0 .097.035.177.087.252l.12.115s6.03 5.922 6.13 6.024c.099.102.22.23.397.23.173 0 .316-.19.399-.274l10.78-14.163A.445.445 0 0021 6.306a.462.462 0 00-.104-.283z">
+                                                                    </path>
+                                                                </svg></button></div>
+                                                        <div class="css-yfyyf7 e1pryhol2"><span
+                                                                class="color-selector__color color-selector__color-picker css-1cldb99 e1pryhol1"
+                                                                role="button" tabindex="0" id="color-picker"
+                                                                style="color: rgb(4, 124, 141);"></span></div>
+                                                    </div>
+                                                </div>`)
+            })
+        });
+        /*********************** color-pallete-js-end **********************/
+
+  </script>
+</body>
+
+</html>

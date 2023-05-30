@@ -31,6 +31,8 @@ class Node(models.Model):
 class Admin_panel(models.Model):
     heading = models.CharField(max_length=15,null=True,blank=True)
     image =  models.ImageField(upload_to='uploads/',blank=True)
+    welcome_msg =  models.TextField(blank=True,null=True)
+    color_theme = models.CharField(max_length = 16,null=True,blank=True)
     def __str__(self):
         return self.heading
 

@@ -30,7 +30,7 @@ body {
   border: none;
   border-radius: var(--chatBot_windowCommonRadius);
   outline: none;
-  background-color: dodgerblue;
+  background-color: rgb(126, 181, 236);
   color: #f8f8f8;
   box-shadow: 10px 10px 5px #aaaaaa;
   cursor: pointer;
@@ -60,6 +60,10 @@ body {
   flex-wrap: nowrap;
   justify-content: space-between;
 }
+h3.chat-head {
+    position: absolute;
+    top: 0;
+}
 
 .header h1 {
   color: white;
@@ -86,6 +90,8 @@ body {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+  position: relative;
+
 }
 
 .body::-webkit-scrollbar {

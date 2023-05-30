@@ -33,4 +33,4 @@ from .models import *
 class PictureUploadForm(forms.ModelForm):
     class Meta:
         model = Admin_panel
-        fields = ['heading','image']
+        fields = ['heading','image','welcome_msg']

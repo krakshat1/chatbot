@@ -15,6 +15,12 @@ urlpatterns = [
     path('index/', views.upload_picture, name='first_page'),
     path('user/', views.user_register, name='register_user'),
     path('user_show/', views.show_query, name='show_query'),
+    path('home_new/', views.home, name='home'),
+    path('chatbot_view/', views.chatbot_view, name='chatbot_view'),
+    path('chatbot_details/', views.chatbot_details, name='chatbot_details'),
+    path('chatbot_trainer/', views.chatbot_trainer, name='chatbot_trainer'),
+    path('query_form/', views.query_form, name='query_form'),
+
 
 
     

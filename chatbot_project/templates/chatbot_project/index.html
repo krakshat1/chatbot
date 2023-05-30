@@ -221,9 +221,11 @@ span.online_chat {
         <img src="{{queryset.image.url }}" alt="My Image">
         <h4>{{queryset.heading}} <span class="online_chat"><img src="https://www.pngkey.com/png/full/417-4174990_how-to-set-use-small-green-dot-icon.png"> online</span></h4>
       </div>
+
       <button class="hideBot fade-out-transition" type="button" onclick="hideBotFun()">X</button>
     </div>
     <div class="body">
+      <h3></h3>
       <img src="https://192.168.1.13/vertage/images/logo-color.png">
     </div>
     <!-- Bot Typing animation -->
@@ -334,8 +336,7 @@ span.online_chat {
 </body>` 
            }
            else if (item.message.includes("welcome") == true) {
-            html += `<h3 class="chat-head" style="color: whitesmoke;">Hello!
-Welcome to Bank cares – Your Digital Assistant for any query related to  Bank. Let’s Chat!</h3
+            html += `<h3 class="chat-head" style="color: whitesmoke;">{{queryset.welcome_msg}}</h3
             
 <button class="button-64" role="button" name ="query"  id = "myButton" onclick = "controlflow(this)" value = "Let's chat "><span class="text">Welcome</span></button>`
 
@@ -413,10 +414,10 @@ Welcome to Bank cares – Your Digital Assistant for any query related to  Bank.
         chatMessage.innerHTML = `<h3 class="chat-head" style="color: whitesmoke;">Hello!
 Welcome to Bank cares  Your Digital Assistant for any query related to  Bank. Let s Chat!</h3>`;
 
-        const arr = ["welcome", "Balance & Statement", "Credit Card Services","Apply for New Products","Open Fixed Deposit Now!","Convert to EMI","Apply for Hospital Daily Cash Policy","MyCard App"];
+        const arr = JSON.parse('{{ menu_details|escapejs }}');;
         for (let i = 0; i < arr.length; i++) {
         var button = arr[i];
-      let msg2 = { name: 'Bot', message: button};
+         let msg2 = { name: 'Bot', message: button};
         messages.push(msg2);
         updateChatText();
         scrollToBottom();

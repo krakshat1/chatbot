@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+    {%include 'new_folder/base.html'%}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link href="documentation/img/vert-favicon.png" rel="icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <title>Vert-Age</title>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+
+                <a href="index.html">
+                    <img src="documentation/img/vert-logo.png" alt="" class="logo-brand">
+                </a>
+
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item">
+                            <div id="custom-search" class="top-search-bar">
+                                <input class="form-control" type="text" placeholder="Search..">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span
+                                    class="indicator"></span></a>
+                        </li>
+                        <li class="nav-item dropdown connection">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+                        </li>
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                    src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                                aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">Person Name</h5>
+                                    <span class="status"></span><span class="ml-2">Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="{% url 'trained:home'%}" aria-expanded="false" data-target="#submenu-1"
+                                    aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span
+                                        class="badge badge-success">6</span></a>
+                                <div id="submenu-1" class="collapse submenu" style="">
+
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'trained:chatbot_view'%}" aria-expanded="false" data-target="#submenu-2"
+                                    aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>ChatBot</a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'trained:chatbot_trainer'%}" aria-expanded="false" data-target="#submenu-3"
+                                    aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>ChatBot Trainer</a>
+
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'trained:chatbot_details'%}" aria-expanded="false"
+                                    data-target="#submenu-4" aria-controls="submenu-4"><i
+                                        class="fas fa-fw fa-file"></i>ChatBot Details</a>
+
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'trained:query_form'%}" aria-expanded="false"
+                                    data-target="#submenu-4" aria-controls="submenu-4"><i
+                                        class="fab fa-fw fa-wpforms"></i>Query Form</a>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">ChatBot Details </h2>
+                                <div class="page-breadcrumb">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Details</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form class="needs-validation" novalidate="">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="cc-expiration">Chatbot Name</label>
+                                                <input type="text" class="form-control" placeholder="Enter Name..."
+                                                    required="">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label for="cc-expiration">Welcome Text</label>
+                                                <input type="textarea" class="form-control"
+                                                    placeholder="Enter Welcome Text..." required="">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label for="cc-expiration">Bot Logo</label>
+                                                <input type="file" class="form-control"
+                                                    placeholder="Enter Welcome Text..." required="">
+                                            </div>
+
+                                            <!-- <div class="col-md-6 mb-3">
+                                                <label for="cc-expiration">Bot Theme</label>
+                                                <div class="row pl-2 align-self-center">
+                                                    <div class="color-div pr-2">
+                                                        <button class="color"></button>
+                                                    </div>
+                                                    <div class="color-div pr-2">
+                                                        <button class="color"></button>
+                                                    </div>
+                                                    <div class="color-div pr-2">
+                                                        <button class="color"></button>
+                                                    </div>
+                                                    <div class="color-div pr-2">
+                                                        <button class="color"></button>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+
+                                            <!-- <div class="col-md-6 mb-3">
+                                                <label for="cc-expiration">Bot Theme</label>
+                                                <div class="row pl-2 align-self-center position-relative">
+                                                    <div class="color-div pr-2">
+                                                        <button class="color"
+                                                            style="background: linear-gradient(115deg, rgb(79, 172, 254), rgb(0, 242, 254));"></button>
+                                                    </div>
+                                                    <div class="color-div pr-2">
+                                                        <button class="color"
+                                                            style="background: linear-gradient(115deg, rgb(124, 58, 183), rgb(255, 154, 173));"></button>
+                                                    </div>
+                                                    <div class="color-div pr-2">
+                                                        <button class="color"
+                                                            style="background: linear-gradient(115deg, rgb(161, 140, 209), rgb(251, 194, 235));"></button>
+                                                    </div>
+                                                    <div class="color-div pr-2">
+                                                        <button class="color"
+                                                            style="background: linear-gradient(115deg, rgb(255, 88, 88), rgb(240, 152, 25));"></button>
+                                                    </div>
+                                                    <div class="color-div pr-2">
+                                                        <button class="color dots-btn" onclick="colorPalette()"
+                                                            id="colorPaletteBtn"><i class="fa fa-ellipsis-h"
+                                                                aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+
+                                                <div id="colorPalette" role="tablist" aria-multiselectable="true">
+                                                    <div class="css-15c0g5a e1pryhol4">
+                                                        <div class="css-1usj5wi e1pryhol3"><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(79, 172, 254), rgb(0, 242, 254));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(124, 58, 183), rgb(255, 154, 173));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(161, 140, 209), rgb(251, 194, 235));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(255, 154, 158), rgb(250, 208, 196));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(255, 88, 88), rgb(240, 152, 25));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(250, 112, 154), rgb(254, 187, 64));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(253, 160, 133), rgb(246, 211, 101));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(218, 164, 117), rgb(255, 224, 185));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(138, 113, 109), rgb(232, 183, 148));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(171, 236, 214), rgb(251, 237, 150));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(58, 165, 96), rgb(183, 230, 108));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(0, 201, 255), rgb(146, 254, 157));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(19, 84, 122), rgb(128, 208, 199));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(223, 233, 243), rgb(255, 255, 255));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(233, 222, 250), rgb(251, 252, 219));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(172, 203, 238), rgb(231, 240, 253));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(147, 165, 207), rgb(228, 239, 233));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(9, 32, 63), rgb(83, 120, 149));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(0, 0, 0), rgb(67, 67, 67));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(10, 14, 136), rgb(0, 177, 206));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(152, 3, 58), rgb(247, 79, 40));"></button><button
+                                                                class="css-1rdng5d e1pryhol7"
+                                                                style="background: linear-gradient(115deg, rgb(4, 124, 141), rgb(47, 242, 137));"><svg
+                                                                    width="20" height="20"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" color="#fff"
+                                                                    class="e1pryhol0 css-1us74xs e11k6mr30"
+                                                                    style="min-width: 20px; min-height: 20px;">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M20.896 6.023L18.52 4.106A.417.417 0 0018.252 4a.41.41 0 00-.273.11L9.336 15.469s-3.397-3.342-3.493-3.44c-.095-.097-.22-.26-.41-.26-.191 0-.278.137-.377.239-.074.08-1.286 1.38-1.883 2.027-.035.04-.056.061-.086.092A.443.443 0 003 14.38c0 .097.035.177.087.252l.12.115s6.03 5.922 6.13 6.024c.099.102.22.23.397.23.173 0 .316-.19.399-.274l10.78-14.163A.445.445 0 0021 6.306a.462.462 0 00-.104-.283z">
+                                                                    </path>
+                                                                </svg></button></div>
+                                                        <div class="css-yfyyf7 e1pryhol2"><span
+                                                                class="color-selector__color color-selector__color-picker css-1cldb99 e1pryhol1"
+                                                                role="button" tabindex="0" id="color-picker"
+                                                                style="color: rgb(4, 124, 141);"></span></div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+                                        </div>
+                                        <hr class="mb-4">
+                                        <div class="col-md-3 mb-3 margin-auto">
+                                            <button class="btn btn-primary btn-lg btn-block" type="submit">Submit
+                                                Details</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                Copyright <a href="#">Xenottabyte Services Pvt. Ltd.</a> All Rights Reserved.
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="text-md-right footer-links d-none d-sm-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end footer -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- end wrapper  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+
+
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        /*********************** color-pallete-js-start **********************/
+        // $(document).ready(function () {
+        //     $("#colorPaletteBtn").on("click", function (e) {
+        //         $("#colorPalette").append(` <div id="colorPalette">
+        //                                             <div class="css-15c0g5a e1pryhol4">
+        //                                                 <div class="css-1usj5wi e1pryhol3"><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(79, 172, 254), rgb(0, 242, 254));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(124, 58, 183), rgb(255, 154, 173));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(161, 140, 209), rgb(251, 194, 235));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(255, 154, 158), rgb(250, 208, 196));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(255, 88, 88), rgb(240, 152, 25));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(250, 112, 154), rgb(254, 187, 64));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(253, 160, 133), rgb(246, 211, 101));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(218, 164, 117), rgb(255, 224, 185));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(138, 113, 109), rgb(232, 183, 148));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(171, 236, 214), rgb(251, 237, 150));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(58, 165, 96), rgb(183, 230, 108));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(0, 201, 255), rgb(146, 254, 157));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(19, 84, 122), rgb(128, 208, 199));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(223, 233, 243), rgb(255, 255, 255));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(233, 222, 250), rgb(251, 252, 219));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(172, 203, 238), rgb(231, 240, 253));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(147, 165, 207), rgb(228, 239, 233));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(9, 32, 63), rgb(83, 120, 149));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(0, 0, 0), rgb(67, 67, 67));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(10, 14, 136), rgb(0, 177, 206));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(152, 3, 58), rgb(247, 79, 40));"></button><button
+        //                                                         class="css-1rdng5d e1pryhol7"
+        //                                                         style="background: linear-gradient(115deg, rgb(4, 124, 141), rgb(47, 242, 137));"><svg
+        //                                                             width="20" height="20"
+        //                                                             xmlns="http://www.w3.org/2000/svg"
+        //                                                             viewBox="0 0 24 24" color="#fff"
+        //                                                             class="e1pryhol0 css-1us74xs e11k6mr30"
+        //                                                             style="min-width: 20px; min-height: 20px;">
+        //                                                             <path fill-rule="evenodd" clip-rule="evenodd"
+        //                                                                 d="M20.896 6.023L18.52 4.106A.417.417 0 0018.252 4a.41.41 0 00-.273.11L9.336 15.469s-3.397-3.342-3.493-3.44c-.095-.097-.22-.26-.41-.26-.191 0-.278.137-.377.239-.074.08-1.286 1.38-1.883 2.027-.035.04-.056.061-.086.092A.443.443 0 003 14.38c0 .097.035.177.087.252l.12.115s6.03 5.922 6.13 6.024c.099.102.22.23.397.23.173 0 .316-.19.399-.274l10.78-14.163A.445.445 0 0021 6.306a.462.462 0 00-.104-.283z">
+        //                                                             </path>
+        //                                                         </svg></button></div>
+        //                                                 <div class="css-yfyyf7 e1pryhol2"><span
+        //                                                         class="color-selector__color color-selector__color-picker css-1cldb99 e1pryhol1"
+        //                                                         role="button" tabindex="0" id="color-picker"
+        //                                                         style="color: rgb(4, 124, 141);"></span></div>
+        //                                             </div>
+        //                                         </div>`)
+        //     })
+        // });
+        /*********************** color-pallete-js-end **********************/
+
+    </script>
+</body>
+
+</html>

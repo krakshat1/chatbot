@@ -17,6 +17,7 @@ from trained.dynamic_models import create_dynamic_model
 from django.db import connection
 from django.http import HttpResponse
 from .models import *
+
 # from .dynamic_models import create_dynamic_model
 # def activity_logging(activity):
 #     activity = activity
@@ -198,4 +199,14 @@ def show_query(request):
             cursor.execute(sql)
         
     return render(request, 'trained/show_query.html', {'my_view': my_view})
-
+    
+def home(request):
+    return render(request, 'new_folder/index.html')
+def chatbot_view(request):
+    return render(request, 'new_folder/chatbot.html')
+def chatbot_details(request):
+    return render(request, 'new_folder/chatbot_details.html')
+def chatbot_trainer(request):
+    return render(request, 'new_folder/chatbot_trainer.html')
+def query_form(request):
+    return render(request, 'new_folder/query_form.html')
